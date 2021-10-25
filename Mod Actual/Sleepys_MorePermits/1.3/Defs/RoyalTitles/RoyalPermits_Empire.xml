@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- New WorkerClasses Coded In (For spawning in soldiers that temporarily join the colony):
+	RoyalTitlePermitWorker_SLP_CallTroopers
+	RoyalTitlePermitWorker_SLP_CallJanissary
+	RoyalTitlePermitWorker_SLP_CallCataphract
+	-->
+	
+	<!-- Titles (Total of 5 Permit Points max):
+	Acolyte
+	Knight
+	Praetor
+	Baron
+	Count
+
+	Duke
+	Consul
+	Stellarch
+	Emperor
+	-->
+	
+	<!-- Soldier Types:
+	Empire_Fighter_Trooper
+	Empire_Fighter_Janissary
+	Empire_Fighter_Cataphract
+	
+	Empire_Fighter_Champion (Melee Only)
+	Empire_Fighter_StellicGuardRanged
+	Empire_Fighter_StellicGuardMelee
+	-->
+	
+	<!-- ======================================== -->
+	<!-- ============= Core Content ============= -->
+	<!-- ======================================== -->
+	<!-- Call Soldier Support(Soldiers that you can control like the laborer teams) -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP1</defName>
+		<label>call trooper team</label>
+		<description>Call a group of 2 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<minTitle>Knight</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(0,9)</uiPosition>
+		<royalAid>
+		<favorCost>4</favorCost>
+		<pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>45</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP1a</defName>
+		<label>call lasting trooper team</label>
+		<description>Call a group of 2 light troopers to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP1</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,9)</uiPosition>
+		<royalAid>
+		<favorCost>8</favorCost>
+		<pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>8</aidDurationDays>
+		</royalAid>
+		<cooldownDays>45</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP1b</defName>
+		<label>call large trooper team</label>
+		<description>Call a group of 4 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP1</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,10)</uiPosition>
+		<royalAid>
+		<favorCost>8</favorCost>
+		<pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+		<pawnCount>4</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>45</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- Call Janissary Support (Soldiers that you can control like the laborer teams) -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2</defName>
+		<label>call janissary team</label>
+		<description>Call a group of 2 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(0,11)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2a</defName>
+		<label>call lasting cataphract team</label>
+		<description>Call a group of 2 professional janissaries to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP2</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,11)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>8</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2b</defName>
+		<label>call large cataphract team</label>
+		<description>Call a group of 4 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP2</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,12)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
+		<pawnCount>4</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2c</defName>
+		<label>call cataphract team</label>
+		<description>Call a group of 2 heavy cataphracts to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<!-- Code in new class -->
+		<workerClass>RoyalTitlePermitWorker_SLP_CallCataphract</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP2</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,13)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Cataphract</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+</Defs>
