@@ -14,41 +14,81 @@
 
 A simple mod that adds new permits to the game. 
 
+While I am an experienced modder and have spent a lot of time testing and balancing this mod, I am new to Rimworld Modding so there may be unknown issues with this mod, these issues might take me longer to understand and fix while I am getting the hang of this. 
+If you have any troubles, let me know in the comments below.
+
 [img]https://i.imgur.com/DbnM7jC.png[/img]
-[b][u]What Does This Mod Add?[/u][/b]
+[b]What Does This Mod Add?[/b]
+- Adds one new type of permit
+- Adds two new permits (each with upgrade paths)
 
+[b]New Permits Types[/b]
+- Call Soldier Support
+Allows you to call empire soldiers to a help fight for or defend your colony for a few days. You can control them just as if they were your own colonists but the support will not do most non-combat work. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty (between -3 to -5 per death depending on the soldier type, this balances these permits from the standard military aid permits which allows them to die consequence free).
 
-[img]https://i.imgur.com/rdXQYZ7.png[/img]
-[b][u]About this Mod[/u][/b]
+[b]New Permits[/b]
+- Call Trooper Team
+2 Light Troopers for 4 days
 
+- Call Enduring Trooper Team (Prerequisite - Call Trooper Team)
+2 Light Troopers for 8 days
+
+- Call Large Trooper Team (Prerequisite - Call Trooper Team)
+4 Light Troopers for 4 days
+
+- Call Janissary Team
+2 Janissaries for 4 days
+
+- Call Enduring Janissary Team (Prerequisite - Call Janissary Team)
+2 Janissaries for 8 days
+
+- Call Large Janissary Team (Prerequisite - Call Janissary Team)
+4 Janissaries for 4 days
+
+- Call Cataphract Team (Prerequisite - Call Janissary Team)
+2 Cataphracts for 4 days
+
+[img]https://i.imgur.com/ss8ZNXk.png[/img]
+[b]Roadmap:[/b]
+- Add more unique, balanced and new permit types and permits (I like variety and been able to specialise your royals but I will avoid bloating the permit tab, overwhelming a player with too many options and adding repeated, basic or overpowered permits. If you have any permits you'd like to see added, let me know!
+- Code in a Mod Options (So players can adjust these permits as they see fit or disable ones they do not like).
+- Balancing where needed.
+
+[img]https://i.imgur.com/YySbEPN.png[/img]
+[b]Compatibility[/b]
+
+[b]Saved Games:[/b]
+- Safe to add to an ongoing game
+- May cause issues if removed from an existing save (I'd recommend you return all permits and ensure no soldiers from these permits are on the map before removing the mod).
+
+[b]Integrated Compatibility:[/b]
+
+[b]Works Great With These Mods:[/b]
+- Guard for Me
+Makes it much easier to use the new soldier support as actual guards, patrols or to protect certain VIPs.
+
+[img]https://i.imgur.com/gghc3iQ.png[/img]
+[b]Conflicts[/b]
+Likely to conflict somewhat with other mods that add permits in the permits tab. The only real conflict is that the permit tab may become messy. I have ensured that the code for my mod will not override or conflict with any other mods.
+I am adding patches to ensure my mod cleans the permit tab up if it detects these mods but I can miss new mods that come out. Let me know below if you find any conflicts with these or any mods.
+
+[img]https://i.imgur.com/31kQWwH.png[/img]
+[b]Known Issues[/b]
+Cataphracts can sometimes spawn with single use weapons like a triple rocket or doomsday. Using this means they then can only punch enemies for the remaining time they have left which isn't very helpful. I have some ideas on how to fix this by limiting the weapons they can arrive with or letting the player tell them to pick up a replacement weapon. Regardless, this will be my top priority to fix.
 
 [img]https://i.imgur.com/WokZwPP.png[/img]
-[b][u]Language Support[/u][/b]
+[b]Language Support[/b]
 
 [b][u]Full Support[/u][/b] (Latest Version to changed Locale: v1.0.0)
 [b]English[/b] - (Developed in this language)
 
-[img]https://i.imgur.com/ss8ZNXk.png[/img]
-[b][u]Roadmap:[/u][/b]
-
-
-[img]https://i.imgur.com/YySbEPN.png[/img]
-[b][u]Compatibility[/u][/b]
-[b]Locked In[/b]
-- 
-
-[b]Integrated Compatibility (This mod will utilise these mods if they are installed):[/b]
-
-[img]https://i.imgur.com/gghc3iQ.png[/img]
-[b][u]Conflicts[/u][/b]
-
-
-[img]https://i.imgur.com/31kQWwH.png[/img]
-[b][u]Known Issues[/u][/b]
-
+[b][u]FAQ[/u][/b]
+[i]Will you add less than 1.3 Version Support?[/i]
+If players start requesting this, I definitely will as I do know that Rimworld does a very good job with multi-version mods but I am not experienced enough to really be able to tackle it at the moment.
 
 Latest Version:
 https://github.com/sleepy068/Rimworld_MorePermits/releases/
+    
     </description>
 
     <modDependencies>
