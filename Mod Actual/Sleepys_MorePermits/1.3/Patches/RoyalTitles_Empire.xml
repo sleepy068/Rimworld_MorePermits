@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/RoyalTitleDef[@ParentName = "BaseEmpireTitle"]/disabledWorkTags</xpath>
+    <value>
+      <disabledWorkTags Inherit="False" />
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RoyalTitleDef[@Name = "BaseEmpireTitleNPC"]</xpath>
+    <value>
+      <canBeInherited>True</canBeInherited>
+      <decreeMtbDays>-1</decreeMtbDays>
+      <!-- disabled -->
+      <decreeTags>
+        <li>All</li>
+      </decreeTags>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RoyalTitleDef[defName = "Duke"]</xpath>
+    <value>
+	  <permitPointsAwarded>1</permitPointsAwarded>
+      <favorCost>22</favorCost>
+      <changeHeirQuestPoints>3700</changeHeirQuestPoints>
+      <decreeMentalBreakCommonality>13</decreeMentalBreakCommonality>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RoyalTitleDef[defName = "Consul"]</xpath>
+    <value>
+	  <permitPointsAwarded>1</permitPointsAwarded>
+      <favorCost>24</favorCost>
+      <changeHeirQuestPoints>3900</changeHeirQuestPoints>
+      <decreeMentalBreakCommonality>14</decreeMentalBreakCommonality>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RoyalTitleDef[defName = "Stellarch"]</xpath>
+    <value>
+	  <permitPointsAwarded>1</permitPointsAwarded>
+      <favorCost>30</favorCost>
+      <changeHeirQuestPoints>4100</changeHeirQuestPoints>
+      <decreeMentalBreakCommonality>15</decreeMentalBreakCommonality>
+    </value>
+  </Operation>
+  <!--
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RoyalTitleDef[defName = "Emperor"]</xpath>
+    <value>
+	  <permitPointsAwarded>1</permitPointsAwarded>
+      <favorCost>45</favorCost>
+      <changeHeirQuestPoints>4300</changeHeirQuestPoints>
+      <decreeMentalBreakCommonality>16</decreeMentalBreakCommonality>
+    </value>
+  </Operation>
+  -->
+</Patch>

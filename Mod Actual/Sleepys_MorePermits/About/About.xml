@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Sleepy's More Permits</name>
+    <author>Sleepy068</author>
+    <url></url>
+    <packageId>sleepy068.rimworld.morepermits</packageId>
+    <supportedVersions>
+        <li>1.3</li>
+    </supportedVersions>
+
+    <description>Simple mod that adds additional permits types. Additional permits are avaliable if you so use YAYOs/Mlies Unlock Emperor (Continued) or [Royalty] Unlock Working Emperor (Continued)
+    </description>
+
+    <modDependencies>
+    </modDependencies>
+    <modDependenciesByVersion>
+    </modDependenciesByVersion>
+
+    <loadAfter>
+    </loadAfter>
+
+    <incompatibleWith>
+    </incompatibleWith>
+	
+</ModMetaData>
