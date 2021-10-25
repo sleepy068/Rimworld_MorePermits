@@ -16,7 +16,7 @@
     <root Class="QuestNode_Sequence">
       <nodes>
 
-        <!-- Generate laborers -->
+        <!-- Generate laborers (troopers) -->
         <li Class="QuestNode_LoopCount">
           <loopCount>$laborersCount</loopCount>
           <node Class="QuestNode_GeneratePawn">
@@ -26,23 +26,27 @@
             <allowAddictions>false</allowAddictions>
             <biocodeWeaponChance>1</biocodeWeaponChance>
             <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
           </node>
         </li>
         <!-- Lock their apparel -->
         <li Class="QuestNode_SetAllApparelLocked">
           <pawns>$laborers</pawns>
         </li>
-        <!-- Disable all work except combat and some basics like cleaning so they wont go crazy (No hauling, might pull them too far away from POIs) -->
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
         <li Class="QuestNode_WorkDisabled">
           <pawns>$laborers</pawns>
           <disabledWorkTags>
-			<li>Skilled labor</li>
+			<li>ManualSkilled</li>
 			<li>Hauling</li>
 			<li>Social</li>
             <li>Intellectual</li>
             <li>Animals</li>
 			<li>Artistic</li>
-			<li>Plant work</li>
+			<li>PlantWork</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
           </disabledWorkTags>
         </li>
         <!-- Give on duty thought -->
@@ -118,7 +122,7 @@
           </node>
         </li>
 
-        <!-- Goodwill penalty for trooper killed or not on shuttle -->
+        <!-- Goodwill penalty for troopers killed or not on shuttle -->
         <li Class="QuestNode_Set">
           <name>goodwillPenaltyPawn</name>
           <value>-3</value>
@@ -140,7 +144,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -211,7 +215,7 @@
     <root Class="QuestNode_Sequence">
       <nodes>
 
-        <!-- Generate laborers -->
+        <!-- Generate laborers (janissaries) -->
         <li Class="QuestNode_LoopCount">
           <loopCount>$laborersCount</loopCount>
           <node Class="QuestNode_GeneratePawn">
@@ -221,23 +225,27 @@
             <allowAddictions>false</allowAddictions>
             <biocodeWeaponChance>1</biocodeWeaponChance>
             <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
           </node>
         </li>
         <!-- Lock their apparel -->
         <li Class="QuestNode_SetAllApparelLocked">
           <pawns>$laborers</pawns>
         </li>
-        <!-- Disable all work except combat and some basics like cleaning so they wont go crazy (No hauling, might pull them too far away from POIs) -->
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
         <li Class="QuestNode_WorkDisabled">
           <pawns>$laborers</pawns>
           <disabledWorkTags>
-			<li>Skilled labor</li>
+			<li>ManualSkilled</li>
 			<li>Hauling</li>
 			<li>Social</li>
             <li>Intellectual</li>
             <li>Animals</li>
 			<li>Artistic</li>
-			<li>Plant work</li>
+			<li>PlantWork</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
           </disabledWorkTags>
         </li>
         <!-- Give on duty thought -->
@@ -335,7 +343,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -406,7 +414,7 @@
     <root Class="QuestNode_Sequence">
       <nodes>
 
-        <!-- Generate laborers -->
+        <!-- Generate laborers (Cataphracts) -->
         <li Class="QuestNode_LoopCount">
           <loopCount>$laborersCount</loopCount>
           <node Class="QuestNode_GeneratePawn">
@@ -416,23 +424,27 @@
             <allowAddictions>false</allowAddictions>
             <biocodeWeaponChance>1</biocodeWeaponChance>
             <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
           </node>
         </li>
         <!-- Lock their apparel -->
         <li Class="QuestNode_SetAllApparelLocked">
           <pawns>$laborers</pawns>
         </li>
-        <!-- Disable all work except combat and some basics like cleaning so they wont go crazy (No hauling, might pull them too far away from POIs) -->
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
         <li Class="QuestNode_WorkDisabled">
           <pawns>$laborers</pawns>
           <disabledWorkTags>
-			<li>Skilled labor</li>
+			<li>ManualSkilled</li>
 			<li>Hauling</li>
 			<li>Social</li>
             <li>Intellectual</li>
             <li>Animals</li>
 			<li>Artistic</li>
-			<li>Plant work</li>
+			<li>PlantWork</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
           </disabledWorkTags>
         </li>
         <!-- Give on duty thought -->
@@ -508,7 +520,7 @@
           </node>
         </li>
 
-        <!-- Goodwill penalty for trooper killed or not on shuttle -->
+        <!-- Goodwill penalty for cataphracts killed or not on shuttle -->
         <li Class="QuestNode_Set">
           <name>goodwillPenaltyPawn</name>
           <value>-5</value>
@@ -530,14 +542,14 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
           </node>
         </li>
 
-        <!-- Missing cataphracts on departure shuttle. Goodwill impact -->
+        <!-- Missing Cataphract on departure shuttle. Goodwill impact -->
         <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
           <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
           <pawns>$laborers</pawns>

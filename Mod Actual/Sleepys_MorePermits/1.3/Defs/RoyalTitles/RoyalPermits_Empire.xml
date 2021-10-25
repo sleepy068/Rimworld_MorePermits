@@ -36,9 +36,8 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1</defName>
 		<label>call trooper team</label>
-		<description>Call a group of 2 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<description>Call a group of 2 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
 		<minTitle>Knight</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
@@ -55,10 +54,9 @@
 	
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1a</defName>
-		<label>call lasting trooper team</label>
-		<description>Call a group of 2 light troopers to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<label>call enduring trooper team</label>
+		<description>Call a group of 2 light troopers to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
 		<minTitle>Praetor</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
@@ -77,9 +75,8 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1b</defName>
 		<label>call large trooper team</label>
-		<description>Call a group of 4 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<description>Call a group of 4 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
 		<minTitle>Praetor</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
@@ -99,9 +96,8 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2</defName>
 		<label>call janissary team</label>
-		<description>Call a group of 2 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<description>Call a group of 2 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
 		<minTitle>Baron</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
@@ -118,10 +114,9 @@
 	
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2a</defName>
-		<label>call lasting cataphract team</label>
-		<description>Call a group of 2 professional janissaries to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<label>call enduring janissary team</label>
+		<description>Call a group of 2 professional janissaries to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
 		<minTitle>Count</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
@@ -139,10 +134,9 @@
 	
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2b</defName>
-		<label>call large cataphract team</label>
-		<description>Call a group of 4 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<label>call large janissary team</label>
+		<description>Call a group of 4 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
 		<minTitle>Count</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
@@ -161,9 +155,8 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2c</defName>
 		<label>call cataphract team</label>
-		<description>Call a group of 2 heavy cataphracts to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other taks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
-		<!-- Code in new class -->
-		<workerClass>RoyalTitlePermitWorker_SLP_CallCataphract</workerClass>
+		<description>Call a group of 2 heavy cataphracts to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll recieve a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallCataphract</workerClass>
 		<minTitle>Count</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>

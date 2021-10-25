@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using RimWorld.QuestGen;
 using Verse;
 
 namespace RimworldSLP_MorePermits
 {
-    public class RoyalTitlePermitWorker_SLP_CallTroopers : RoyalTitlePermitWorker
+	public class RoyalTitlePermitWorker_SLP_CallTroopers : RoyalTitlePermitWorker
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
@@ -18,11 +17,11 @@ namespace RimworldSLP_MorePermits
 				yield break;
 			}
 			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallLaborersNumLaborers".Translate(this.def.royalAid.pawnCount) + "): ";
+			string label = this.def.LabelCap + " (" + "CommandCallTroopersNumTroopers".Translate(this.def.royalAid.pawnCount) + "): ";
 			bool free;
 			if (base.FillAidOption(pawn, faction, ref label, out free))
 			{
-				action = delegate()
+				action = delegate ()
 				{
 					this.SLPCallTroopers(pawn, map, faction, free);
 				};
@@ -37,7 +36,7 @@ namespace RimworldSLP_MorePermits
 			{
 				return;
 			}
-			QuestScriptDef Permit_SLP_CallTroopers = QuestScriptDefOf.Permit_CallLaborers;
+			QuestScriptDef Permit_SLP_CallTroopers = QuestScriptDefOfSLP.Permit_SLP_CallTroopers;
 			Slate slate = new Slate();
 			slate.Set<Map>("map", map, false);
 			slate.Set<int>("laborersCount", this.def.royalAid.pawnCount, false);
@@ -64,7 +63,7 @@ namespace RimworldSLP_MorePermits
 				yield break;
 			}
 			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallLaborersNumLaborers".Translate(this.def.royalAid.pawnCount) + "): ";
+			string label = this.def.LabelCap + " (" + "CommandCallJanissariesNumJanissaries".Translate(this.def.royalAid.pawnCount) + "): ";
 			bool free;
 			if (base.FillAidOption(pawn, faction, ref label, out free))
 			{
@@ -83,7 +82,7 @@ namespace RimworldSLP_MorePermits
 			{
 				return;
 			}
-			QuestScriptDef Permit_SLP_CallJanissary = QuestScriptDefOf.Permit_CallLaborers;
+			QuestScriptDef Permit_SLP_CallJanissary = QuestScriptDefOfSLP.Permit_SLP_CallJanissary;
 			Slate slate = new Slate();
 			slate.Set<Map>("map", map, false);
 			slate.Set<int>("laborersCount", this.def.royalAid.pawnCount, false);
@@ -110,7 +109,7 @@ namespace RimworldSLP_MorePermits
 				yield break;
 			}
 			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallLaborersNumLaborers".Translate(this.def.royalAid.pawnCount) + "): ";
+			string label = this.def.LabelCap + " (" + "CommandCallCataphractsNumCataphracts".Translate(this.def.royalAid.pawnCount) + "): ";
 			bool free;
 			if (base.FillAidOption(pawn, faction, ref label, out free))
 			{
@@ -129,7 +128,7 @@ namespace RimworldSLP_MorePermits
 			{
 				return;
 			}
-			QuestScriptDef Permit_SLP_CallCataphract = QuestScriptDefOf.Permit_CallLaborers;
+			QuestScriptDef Permit_SLP_CallCataphract = QuestScriptDefOfSLP.Permit_SLP_CallCataphract;
 			Slate slate = new Slate();
 			slate.Set<Map>("map", map, false);
 			slate.Set<int>("laborersCount", this.def.royalAid.pawnCount, false);
@@ -144,5 +143,15 @@ namespace RimworldSLP_MorePermits
 			}
 		}
 	}
+
+	[DefOf]
+	public static class QuestScriptDefOfSLP
+	{
+		public static QuestScriptDef Permit_SLP_CallTroopers;
+		public static QuestScriptDef Permit_SLP_CallJanissary;
+		public static QuestScriptDef Permit_SLP_CallCataphract;
+
+	}
 }
+
 
