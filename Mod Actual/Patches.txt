@@ -1,0 +1,14 @@
+Update v1.0.2
+
+Additions:
+Added two new permits if the player is using Mlie's (Original Author YAYO) Unlock Emperor or Unlock Working Emperor (Only Mlie's version is supported for now)
+Added support for permits added by Ultratech: Altered Carbon Remastered
+
+Changes:
+Balanced Honor cost for call cataphract team (Reduced from 12 Honor to 8 Honor)
+
+Localisation:
+Added 2 new localisation fields for the new mod-detected permits
+
+Bug Fixes:
+N/A

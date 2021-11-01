@@ -19,6 +19,16 @@
 	Emperor
 	-->
 	
+	<!-- Balancing:
+	Empire_Fighter_Trooper (Aid: 1 Honour | Stay: 2 Honour)
+	Empire_Fighter_Janissary (Aid: 1.5 Honour | Stay: 3 Honour)
+	Empire_Fighter_Cataphract (Aid: 2 Honour | Stay: 4 Honour)
+	
+	Empire_Fighter_Champion (Melee Only)
+	Empire_Fighter_StellicGuardRanged (Aid: 2.5 Honour | Stay: 5 Honour)
+	Empire_Fighter_StellicGuardMelee (Aid: 2.5 Honour | Stay: 5 Honour)
+	-->
+	
 	<!-- Soldier Types:
 	Empire_Fighter_Trooper
 	Empire_Fighter_Janissary
@@ -32,7 +42,10 @@
 	<!-- ======================================== -->
 	<!-- ============= Core Content ============= -->
 	<!-- ======================================== -->
+	
 	<!-- Call Soldier Support(Soldiers that you can control like the laborer teams) -->
+	<!-- ======================================== -->
+	<!-- 2 Light Troopers (4 Days) - CallMilitaryAidSLP1 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1</defName>
 		<label>call trooper team</label>
@@ -52,6 +65,7 @@
 		<cooldownDays>45</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- 2 Light Troopers (8 Days) - CallMilitaryAidSLP1a -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1a</defName>
 		<label>call enduring trooper team</label>
@@ -72,6 +86,7 @@
 		<cooldownDays>45</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- 4 Light Troopers (4 Days) - CallMilitaryAidSLP1b -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1b</defName>
 		<label>call large trooper team</label>
@@ -93,6 +108,8 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- Call Janissary Support (Soldiers that you can control like the laborer teams) -->
+	<!-- ======================================== -->
+	<!-- 2 Janissaries (4 Days) - CallMilitaryAidSLP2 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2</defName>
 		<label>call janissary team</label>
@@ -112,6 +129,7 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- 2 Janissaries (8 Days) - CallMilitaryAidSLP2a -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2a</defName>
 		<label>call enduring janissary team</label>
@@ -132,6 +150,7 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- 4 Janissaries (4 Days) - CallMilitaryAidSLP2b -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2b</defName>
 		<label>call large janissary team</label>
@@ -152,6 +171,7 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- 2 Cataphracts (4 Days) - CallMilitaryAidSLP2c -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2c</defName>
 		<label>call cataphract team</label>
@@ -164,11 +184,12 @@
 		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,13)</uiPosition>
 		<royalAid>
-		<favorCost>12</favorCost>
+		<favorCost>8</favorCost>
 		<pawnKindDef>Empire_Fighter_Cataphract</pawnKindDef>
 		<pawnCount>2</pawnCount>
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
+	
 </Defs>
