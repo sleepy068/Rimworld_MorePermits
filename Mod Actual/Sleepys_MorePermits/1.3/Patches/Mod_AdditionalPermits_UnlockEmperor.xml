@@ -30,7 +30,7 @@
 						<pawnCount>2</pawnCount>
 						<aidDurationDays>4</aidDurationDays>
 						</royalAid>
-						<cooldownDays>60</cooldownDays>
+						<cooldownDays>80</cooldownDays>
 						</RoyalTitlePermitDef>
 					</value>
 				</li>
@@ -55,7 +55,7 @@
 						<pawnCount>2</pawnCount>
 						<aidDurationDays>4</aidDurationDays>
 						</royalAid>
-						<cooldownDays>60</cooldownDays>
+						<cooldownDays>80</cooldownDays>
 						</RoyalTitlePermitDef>
 					</value>
 				</li>
