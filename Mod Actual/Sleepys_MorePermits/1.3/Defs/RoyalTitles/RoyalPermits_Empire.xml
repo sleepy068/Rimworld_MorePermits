@@ -24,7 +24,7 @@
 	Empire_Fighter_Janissary (Aid: 1.5 Honour | Stay: 3 Honour)
 	Empire_Fighter_Cataphract (Aid: 2 Honour | Stay: 4 Honour)
 	
-	Empire_Fighter_Champion (Melee Only)
+	Empire_Fighter_Champion (Melee Only) (Aid: N/A Honour | Stay: 3 Honour)
 	Empire_Fighter_StellicGuardRanged (Aid: 2.5 Honour | Stay: 5 Honour)
 	Empire_Fighter_StellicGuardMelee (Aid: 2.5 Honour | Stay: 5 Honour)
 	-->
@@ -187,6 +187,70 @@
 		<favorCost>8</favorCost>
 		<pawnKindDef>Empire_Fighter_Cataphract</pawnKindDef>
 		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- Call Champion Support (Soldiers that you can control like the laborer teams) -->
+	<!-- ======================================== -->
+	<!-- 2 Champions (4 Days) - CallMilitaryAidSLP3 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP3</defName>
+		<label>call champion team</label>
+		<description>Call a group of 2 champions to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallChampions</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(0,14)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>Empire_Fighter_Champion</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Champions (8 Days) - CallMilitaryAidSLP3a -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP3a</defName>
+		<label>call enduring champion team</label>
+		<description>Call a group of 2 champions to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallChampions</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP3</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,14)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Champion</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>8</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 4 Champions (4 Days) - CallMilitaryAidSLP3b -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP3b</defName>
+		<label>call large champion team</label>
+		<description>Call a group of 4 champions to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallChampions</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP3</prerequisite>
+		<!-- Patch UI Position if other permit mods used -->
+		<uiPosition>(1,15)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Champion</pawnKindDef>
+		<pawnCount>4</pawnCount>
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>

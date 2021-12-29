@@ -1,4 +1,5 @@
 C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Mod Actual\Sleepys_MorePermits\Assemblies\RimworldSLP_MorePermits.dll
 C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Mod Actual\Sleepys_MorePermits\Source\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.CoreCompileInputs.cache
 C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Mod Actual\Sleepys_MorePermits\Source\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.dll
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Mod Actual\Sleepys_MorePermits\Source\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csprojAssemblyReference.cache
+C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Mod Actual\Sleepys_MorePermits\Source\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.AssemblyReference.cache
+C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Mod Actual\Sleepys_MorePermits\1.3\Assemblies\RimworldSLP_MorePermits.dll

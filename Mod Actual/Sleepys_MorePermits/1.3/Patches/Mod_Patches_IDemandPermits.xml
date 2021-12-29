@@ -58,6 +58,27 @@
 					</value>
 				</li>
 				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,15)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3a"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,15)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3b"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,16)</uiPosition>
+					</value>
+				</li>
+				
 				<!-- Royal Arsenel and I Demand Permits override positions, this will clean up the permit tab if you use these two mods too -->
 				<li Class="PatchOperationFindMod">
 					<mods>

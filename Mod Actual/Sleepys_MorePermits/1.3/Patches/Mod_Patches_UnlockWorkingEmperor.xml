@@ -58,6 +58,27 @@
 					</value>
 				</li>
 				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,15)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3a"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,15)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3b"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,16)</uiPosition>
+					</value>
+				</li>
+				
 				<!-- UnlockWorkingEmperor and Royal Arsenel override positions, this will clean up the permit tab if you use these three mods too -->
 				<li Class="PatchOperationFindMod">
 					<mods>
@@ -159,6 +180,41 @@
 								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP2c"]/uiPosition</xpath>
 								<value>
 									<uiPosition>(1,16)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(0,17)</uiPosition>
+								</value>
+							</li>
+
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3a"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(1,17)</uiPosition>
+								</value>
+							</li>
+
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3b"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(1,18)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_ADD_UE1a"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(0,19)</uiPosition>
+								</value>
+							</li>
+
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_ADD_UE1b"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(1,19)</uiPosition>
 								</value>
 							</li>
 							
