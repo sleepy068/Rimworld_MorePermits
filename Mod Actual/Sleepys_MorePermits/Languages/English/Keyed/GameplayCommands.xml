@@ -6,8 +6,9 @@
   <CommandCallCataphractsNumCataphracts>{0} cataphracts</CommandCallCataphractsNumCataphracts>
   <CommandCallStellicMGNumStellicMG>{0} stellic guards (melee)</CommandCallStellicMGNumStellicMG>
   <CommandCallStellicRGNumStellicRG>{0} stellic guards (ranged)</CommandCallStellicRGNumStellicRG>
-  <CommandCallChampionsNumChampions>{0} champions</CommandCallChampionsNumChampions>
-  <CommandCallChampionsNumParamedics>{0} paramedics</CommandCallChampionsNumParamedics>
-  <CommandCallChampionsNumCombatParamedics>{0} combat paramedics</CommandCallChampionsNumCombatParamedics>
+  <CommandCallNumChampions>{0} champions</CommandCallNumChampions>
+  <CommandCallNumParamedics>{0} paramedics</CommandCallNumParamedics>
+  <CommandCallNumCombatParamedics>{0} combat paramedics</CommandCallNumCombatParamedics>
+  <CommandCallNumSurgeons>{0} surgeons</CommandCallNumSurgeons>
   
 </LanguageData>

@@ -13,6 +13,9 @@
 			<li>
               <only>(136, 8, 8)</only>
             </li>
+			<li>
+              <only>(130, 130, 130)</only>
+            </li>
           </options>
         </colorGenerator>
       </li>
@@ -87,13 +90,85 @@
    </inventoryOptions>
    
    <!-- Force gear colour -->
-   <apparelColor>(130,130,130)</apparelColor>
+   <!-- <apparelColor>(130,130,130)</apparelColor> -->
 	
 	<!-- Force Skill -->
 	<skills>
       <li>
         <skill>Medicine</skill>
         <range>8~12</range>
+      </li>
+    </skills>
+	
+	<!-- Set allowed work types -->
+	<requiredWorkTags>
+	  <li>Caring</li>
+    </requiredWorkTags>
+  </PawnKindDef>
+  
+    <!-- Civilian Surgeon -->
+	<PawnKindDef ParentName="EmpireMedicBase">
+    <defName>Empire_Common_Surgeon</defName>
+    <label>imperial surgeon</label>
+    <race>Human</race>
+    <defaultFactionType>Empire</defaultFactionType>
+    <minTitleRequired>Freeholder</minTitleRequired>
+    <maxGenerationAge>65</maxGenerationAge>
+    <combatPower>30</combatPower>
+    <backstoryFiltersOverride>
+      <li>
+        <categories>
+          <li>ImperialCommon</li>
+          <li>ImperialFighter</li>
+        </categories>
+      </li>
+    </backstoryFiltersOverride>
+    <baseRecruitDifficulty>0.30</baseRecruitDifficulty>
+    <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+    <isFighter>false</isFighter>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+	  <li>IndustrialAdvanced</li>
+	  <li>IndustrialMilitaryBasic</li>
+    </apparelTags>
+    <apparelMoney>2000~6000</apparelMoney>
+    <gearHealthRange>1~1</gearHealthRange>
+    <apparelAllowHeadgearChance>0.5</apparelAllowHeadgearChance>
+    <techHediffsMoney>500~3000</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <techHediffsChance>0.08</techHediffsChance>
+    <apparelDisallowTags>
+      <li>Western</li>
+    </apparelDisallowTags>
+    <disallowedTraits>
+      <li>Nudist</li>
+    </disallowedTraits>
+    <initialWillRange>2~5</initialWillRange>
+    <initialResistanceRange>15~22</initialResistanceRange>
+	
+	<!-- Start with glitterworld meds -->
+	<inventoryOptions>
+     <skipChance>0.01</skipChance>
+     <subOptionsTakeAll>
+       <li>
+         <thingDef>MedicineUltratech</thingDef>
+         <countRange>4~7</countRange>
+       </li>
+     </subOptionsTakeAll>
+   </inventoryOptions>
+   
+   <!-- Force gear colour -->
+   <!-- <apparelColor>(130,130,130)</apparelColor> -->
+	
+	<!-- Force Skill -->
+	<skills>
+      <li>
+        <skill>Medicine</skill>
+        <range>15~18</range>
       </li>
     </skills>
 	
@@ -116,6 +191,9 @@
             </li>
 			<li>
               <only>(136, 8, 8)</only>
+            </li>
+			<li>
+              <only>(75, 75, 75)</only>
             </li>
           </options>
         </colorGenerator>

@@ -89,6 +89,13 @@
 				<li Class="PatchOperationReplace">
 					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4a"]/uiPosition</xpath>
 					<value>
+						<uiPosition>(1,18)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4b"]/uiPosition</xpath>
+					<value>
 						<uiPosition>(1,17)</uiPosition>
 					</value>
 				</li>
@@ -227,6 +234,13 @@
 							<li Class="PatchOperationReplace">
 								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4a"]/uiPosition</xpath>
 								<value>
+									<uiPosition>(1,20)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4b"]/uiPosition</xpath>
+								<value>
 									<uiPosition>(1,19)</uiPosition>
 								</value>
 							</li>
@@ -234,14 +248,14 @@
 							<li Class="PatchOperationReplace">
 								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_ADD_UE1a"]/uiPosition</xpath>
 								<value>
-									<uiPosition>(0,20)</uiPosition>
+									<uiPosition>(0,21)</uiPosition>
 								</value>
 							</li>
 
 							<li Class="PatchOperationReplace">
 								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_ADD_UE1b"]/uiPosition</xpath>
 								<value>
-									<uiPosition>(1,20)</uiPosition>
+									<uiPosition>(1,21)</uiPosition>
 								</value>
 							</li>
 							

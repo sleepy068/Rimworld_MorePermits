@@ -89,6 +89,13 @@
 				<li Class="PatchOperationReplace">
 					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4a"]/uiPosition</xpath>
 					<value>
+						<uiPosition>(1,18)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4b"]/uiPosition</xpath>
+					<value>
 						<uiPosition>(1,17)</uiPosition>
 					</value>
 				</li>
