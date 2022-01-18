@@ -13,7 +13,7 @@
 				<li Class="PatchOperationReplace">
 					<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
 					<value>
-						<uiPosition>(0,16)</uiPosition>
+						<uiPosition>(0,17)</uiPosition>
 					</value>
 				</li>
 				
@@ -26,7 +26,7 @@
 							<li Class="PatchOperationReplace">
 								<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
 								<value>
-								<uiPosition>(0,20)</uiPosition>
+								<uiPosition>(0,21)</uiPosition>
 								</value>
 							</li>
 						</operations>
@@ -42,7 +42,7 @@
 							<li Class="PatchOperationReplace">
 								<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
 								<value>
-								<uiPosition>(0,20)</uiPosition>
+								<uiPosition>(0,21)</uiPosition>
 								</value>
 							</li>
 						</operations>

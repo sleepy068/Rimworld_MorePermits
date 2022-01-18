@@ -247,7 +247,7 @@ namespace RimworldSLP_MorePermits
 				yield break;
 			}
 			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallChampionsNumTroopers".Translate(this.def.royalAid.pawnCount) + "): ";
+			string label = this.def.LabelCap + " (" + "CommandCallChampionsNumChampions".Translate(this.def.royalAid.pawnCount) + "): ";
 			bool free;
 			if (base.FillAidOption(pawn, faction, ref label, out free))
 			{
@@ -282,6 +282,97 @@ namespace RimworldSLP_MorePermits
 		}
 	}
 
+	public class RoyalTitlePermitWorker_SLP_CallParamedics : RoyalTitlePermitWorker
+	{
+		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
+		{
+			string t;
+			if (this.AidDisabled(map, pawn, faction, out t))
+			{
+				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
+				yield break;
+			}
+			Action action = null;
+			string label = this.def.LabelCap + " (" + "CommandCallChampionsNumParamedics".Translate(this.def.royalAid.pawnCount) + "): ";
+			bool free;
+			if (base.FillAidOption(pawn, faction, ref label, out free))
+			{
+				action = delegate ()
+				{
+					this.SLPCallParamedics(pawn, map, faction, free);
+				};
+			}
+			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
+			yield break;
+		}
+
+		private void SLPCallParamedics(Pawn pawn, Map map, Faction faction, bool free)
+		{
+			if (faction.HostileTo(Faction.OfPlayer))
+			{
+				return;
+			}
+			QuestScriptDef Permit_SLP_CallParamedics = QuestScriptDefOfSLP.Permit_SLP_CallParamedics;
+			Slate slate = new Slate();
+			slate.Set<Map>("map", map, false);
+			slate.Set<int>("laborersCount", this.def.royalAid.pawnCount, false);
+			slate.Set<Faction>("permitFaction", faction, false);
+			slate.Set<PawnKindDef>("laborersPawnKind", this.def.royalAid.pawnKindDef, false);
+			slate.Set<float>("laborersDurationDays", this.def.royalAid.aidDurationDays, false);
+			QuestUtility.GenerateQuestAndMakeAvailable(Permit_SLP_CallParamedics, slate);
+			pawn.royalty.GetPermit(this.def, faction).Notify_Used();
+			if (!free)
+			{
+				pawn.royalty.TryRemoveFavor(faction, this.def.royalAid.favorCost);
+			}
+		}
+	}
+
+	public class RoyalTitlePermitWorker_SLP_CallCombatParamedics : RoyalTitlePermitWorker
+	{
+		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
+		{
+			string t;
+			if (this.AidDisabled(map, pawn, faction, out t))
+			{
+				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
+				yield break;
+			}
+			Action action = null;
+			string label = this.def.LabelCap + " (" + "CommandCallChampionsNumCombatParamedics".Translate(this.def.royalAid.pawnCount) + "): ";
+			bool free;
+			if (base.FillAidOption(pawn, faction, ref label, out free))
+			{
+				action = delegate ()
+				{
+					this.SLPCallCombatParamedics(pawn, map, faction, free);
+				};
+			}
+			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
+			yield break;
+		}
+
+		private void SLPCallCombatParamedics(Pawn pawn, Map map, Faction faction, bool free)
+		{
+			if (faction.HostileTo(Faction.OfPlayer))
+			{
+				return;
+			}
+			QuestScriptDef Permit_SLP_CallCombatParamedics = QuestScriptDefOfSLP.Permit_SLP_CallCombatParamedics;
+			Slate slate = new Slate();
+			slate.Set<Map>("map", map, false);
+			slate.Set<int>("laborersCount", this.def.royalAid.pawnCount, false);
+			slate.Set<Faction>("permitFaction", faction, false);
+			slate.Set<PawnKindDef>("laborersPawnKind", this.def.royalAid.pawnKindDef, false);
+			slate.Set<float>("laborersDurationDays", this.def.royalAid.aidDurationDays, false);
+			QuestUtility.GenerateQuestAndMakeAvailable(Permit_SLP_CallCombatParamedics, slate);
+			pawn.royalty.GetPermit(this.def, faction).Notify_Used();
+			if (!free)
+			{
+				pawn.royalty.TryRemoveFavor(faction, this.def.royalAid.favorCost);
+			}
+		}
+	}
 
 	[DefOf]
 	public static class QuestScriptDefOfSLP
@@ -292,6 +383,8 @@ namespace RimworldSLP_MorePermits
 		public static QuestScriptDef Permit_SLP_CallStellicGuardMelee;
 		public static QuestScriptDef Permit_SLP_CallStellicGuardRanged;
 		public static QuestScriptDef Permit_SLP_CallChampions;
+		public static QuestScriptDef Permit_SLP_CallParamedics;
+		public static QuestScriptDef Permit_SLP_CallCombatParamedics;
 	}
 }
 
