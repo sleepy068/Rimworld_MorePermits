@@ -267,7 +267,7 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP4</defName>
 		<label>call paramedics</label>
-		<description>Call a group of 2 paramedics to assist you for 4 days. These civilians can help you with any outstanding medical issues your colony may be facing but they won't do many other tasks. You can control them as though they were your own colonists. These specialists are civilians and you are expected to keep them safe and out of direct combat situations. If they die in battle you'll receive a significant goodwill penalty.</description>
+		<description>Call a group of 2 paramedics to assist you for 4 days. These civilians can help you with any outstanding medical issues your colony may be facing but they won't do many other tasks. You can control them as though they were your own colonists. These specialists are civilians and you are expected to keep them safe and out of direct combat situations. If they die in battle you'll receive a significant goodwill penalty. \n\nParamedics will bring their own medicine to support your colony but may need to additional supplies depending on the work that is required.</description>
 		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallParamedics</workerClass>
 		<minTitle>Knight</minTitle>
 		<faction>Empire</faction>
@@ -287,7 +287,7 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP4a</defName>
 		<label>call combat paramedics</label>
-		<description>Call a group of 2 combat paramedics to assist you for 4 days. These soldiers can help fight for or defend your colony but they specialise in providing medical care to your colony and colonists even under combat conditions. Been specialised they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<description>Call a group of 2 combat paramedics to assist you for 4 days. These soldiers can help fight for or defend your colony but they specialise in providing medical care to your colony and colonists even under combat conditions. Been specialised they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty. \n\nCombat Paramedics will bring their own medicine to support your colony but may need to additional supplies depending on the work that is required.</description>
 		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallCombatParamedics</workerClass>
 		<minTitle>Praetor</minTitle>
 		<faction>Empire</faction>
@@ -308,7 +308,7 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP4b</defName>
 		<label>call surgery team</label>
-		<description>Call a group of 2 surgeons to assist you for 4 days. These civilians are expertly trained in their medical fields can help you with any outstanding medical issues or surgeries your colony may be facing but they won't do many other tasks. You can control them as though they were your own colonists. These specialists are civilians and you are expected to keep them safe and out of direct combat situations. If they die in battle you'll receive a significant goodwill penalty.</description>
+		<description>Call a group of 2 surgeons to assist you for 4 days. These civilians are expertly trained in their medical fields and can help you with any outstanding medical issues or surgeries your colony may be facing but they won't do many other tasks. You can control them as though they were your own colonists. These specialists are civilians and you are expected to keep them safe and out of direct combat situations. If they die in battle you'll receive a significant goodwill penalty. \n\nSurgeons will bring their own medicine to support your colony but may need to additional supplies depending on the work that is required.</description>
 		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallSurgeons</workerClass>
 		<minTitle>Praetor</minTitle>
 		<faction>Empire</faction>
