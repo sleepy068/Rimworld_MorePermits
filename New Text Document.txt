@@ -1,0 +1,90 @@
+[img]https://i.imgur.com/JDaeY60.png[/img]
+[h2]Sleepy's More Permits (v1.0.4)[/h2]
+
+A simple mod that adds new highly balanced permits to the game to be used by your royals.
+Balance is critical to me and I will do my best to ensure my permits do not upset this.
+
+While I am an experienced modder and have spent a lot of time testing and balancing this mod, I am new to Rimworld Modding so there may be unknown or unexpected issues, these issues might take me longer to understand and fix while I am getting the hang of this but rest assured I'll fix them up if any are reported.
+If you have any troubles, let me know in the comments below.
+
+[img]https://i.imgur.com/DbnM7jC.png[/img]
+[b]What Does This Mod Add?[/b]
+- Adds one new type of permit
+- Adds two new permits (each with upgrade paths)
+- Adds additional permits if supported mods are detected (see 'Compatibility' for more details)
+- Rearranges permits added by other mods in the Permits Tab to ensure no overlapping and compatibility with supported mods
+
+[b]New Permits Types[/b]
+- Call Soldier Support
+Allows you to call empire soldiers to help fight for or defend your colony for a few days. You can control them just as if they were your own colonists but the support will not do most non-combat work. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty (between -3 to -5 per death depending on the soldier class (it'll vary when moving towards natural goodwill), this balances these permits though from the standard military aid which allows them to die consequence free). Soldier support will arrive via a shuttle, the shuttle system in game generally lands at landing pads (using the landing beacons), near your structures if you have a base built or randomly on the map if no structures/home area is detected. Keep this in mind when using this permit (it isn't as on point as the military aid, again for balancing).
+
+- Call Medical Support
+Allows you to call empire civilians and soldiers to help you deal with medical emergencies, treatment and surgeries your colony may need over a few days. They will arrive with a reasonable supply of medicine that they will use directly from their inventory when treating. You can control them just as if they were your own colonists but the support will not do most non-combat work. You are expected to keep them safe and if they die in battle you'll receive a significant goodwill penalty (between -3 (soldier) to -12 (civilian) per death depending on the class (it'll vary when moving towards natural goodwill). Medical support will arrive via a shuttle.
+
+[b]New Permits[/b]
+Enduring or Large variants require the original team as a prerequisite (e.g. call large trooper team requires call trooper team)
+
+[img]https://i.imgur.com/0vn3OFh.png[/img]
+[img]https://i.imgur.com/vLpfXzY.png[/img]
+[img]https://i.imgur.com/6Li74H3.png[/img]
+[img]https://i.imgur.com/uaW1ni0.png[/img]
+[img]https://i.imgur.com/M80kDtC.png[/img]
+[img]https://i.imgur.com/bjBfhKE.png[/img]
+[img]https://i.imgur.com/tcceeoY.png[/img]
+[img]https://i.imgur.com/dAWhn5B.png[/img]
+[img]https://i.imgur.com/JJiGQ9k.png[/img]
+[img]https://i.imgur.com/bPx1ma4.png[/img]
+[img]https://i.imgur.com/K9dcv6r.png[/img]
+[img]https://i.imgur.com/FqL7FWU.png[/img]
+[img]https://i.imgur.com/zTq4jt2.png[/img]
+
+[img]https://i.imgur.com/ss8ZNXk.png[/img]
+[b]Roadmap:[/b]
+- Maintain a Rimworld with no conflicting permit mods (this mod will take this on and ensure compatibility)
+- Code in a Mod Options (So players can adjust these permits as they see fit or disable ones they do not like).
+- Balancing where needed.
+- Possibly feature complete (I'm actually quite happy with all that is added and can't really see what else I could add, or anything else that wouldn't simply be repeated stuff, recommendations always welcome though).
+
+[img]https://i.imgur.com/YySbEPN.png[/img]
+[b]On Going Games:[/b]
+- Safe to add to an ongoing game
+- May cause issues if removed from an existing save (I'd recommend you return all permits and ensure no soldiers from these permits are on the map before removing the mod, you should get a one time red error saying the game couldn't find the old permits but that should be it). It is a good practice not to remove mods from an ongoing game.
+
+[b]Compatibility[/b]
+- This mod or any of my mods will never touch base game content. So it should be compatible with any mods that change or add to royalty, titles or permits.
+- Compatible with any other permit mods (Please report any issues with overlapping permits if you spot them and I will write a patch for it).
+
+[b]Integrated Compatibility:[/b]
+I have made patches that cleans up the permit tab if you are using any combination of these mods. This prevents overlapping permits which prevents you selecting one.
+- [Royalty] Unlock Working Emperor (Continued)
+- Unlock Emperor (Continued)
+- I Demand Permits
+- Royal Arsenal - Extra Permits
+ - Ultratech: Altered Carbon Remastered
+
+[b]Compatibility with Additional Content[/b]
+I have made patches that adds additional content inline with the scope of this mod if you are using the following mods.
+- [Royalty] Unlock Working Emperor (Continued) or Unlock Emperor (Continued)
+Adds an additional two new permits (Call Stellic Melee Team & Call Stellic Ranged Team).
+
+[img]https://i.imgur.com/gghc3iQ.png[/img]
+[b]Conflicts[/b]
+Likely to conflict somewhat with other mods that add permits in the permits tab. The only real conflict is that the permit tab may become messy. I have ensured that the code for my mod will not override or conflict with any other mods.
+I am adding patches to ensure my mod cleans the permit tab up if it detects these mods but I am not likely to notice new permit mods or changes to existing ones. Let me know below if you find any conflicts with these or any mods.
+
+[img]https://i.imgur.com/31kQWwH.png[/img]
+[b]Known Issues[/b]
+Cataphracts can sometimes spawn with single use weapons like a triple rocket or doomsday. Using this means they then can only punch enemies for the remaining time they have left which isn't very helpful. Regardless, this will be my top priority to fix.
+
+[img]https://i.imgur.com/WokZwPP.png[/img]
+[b]Language Support[/b]
+
+[b][u]Full Support[/u][/b] (Latest Version to changed Locale: v1.0.3)
+[b]English[/b] - (Developed in this language)
+
+[b][u]FAQ[/u][/b]
+[i]Does it work for versions below 1.3?[/i]
+I have no idea sorry as I don't use those versions, let me know if you have any issues and I'll try and fix those for you if you are running an older version of Rimworld. If it seems to work just fine, let me know too and I'll add the version tag.
+
+Latest Version:
+https://github.com/sleepy068/Rimworld_MorePermits/releases/
