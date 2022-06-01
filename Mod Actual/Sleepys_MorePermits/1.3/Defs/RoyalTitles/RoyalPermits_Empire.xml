@@ -325,4 +325,43 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- Short Range Transport Shuttle -->
+	<RoyalTitlePermitDef>
+    <defName>SLP_CallTransportShuttle1</defName>
+    <label>call short range shuttle</label>
+    <description>Call a short range shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 35 world tiles.</description>
+    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+    <minTitle>Knight</minTitle>
+    <faction>Empire</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>20</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+    <uiPosition>(0,18)</uiPosition>
+    <royalAid>
+      <favorCost>4</favorCost>
+      <targetingRange>22.4</targetingRange>
+      <targetingRequireLOS>false</targetingRequireLOS>
+    </royalAid>
+  </RoyalTitlePermitDef>
+  
+  <!-- Quick Short Range Transport Shuttle -->
+	<RoyalTitlePermitDef>
+    <defName>SLP_CallTransportShuttle2</defName>
+    <label>call quick reaction shuttle</label>
+    <description>Call a rapid quick reaction short range shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 35 world tiles. It'll be ready to use again very quickly.</description>
+    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+    <minTitle>Knight</minTitle>
+    <faction>Empire</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>7</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+	<prerequisite>SLP_CallTransportShuttle1</prerequisite>
+    <uiPosition>(1,18)</uiPosition>
+    <royalAid>
+      <favorCost>4</favorCost>
+      <targetingRange>22.4</targetingRange>
+      <targetingRequireLOS>false</targetingRequireLOS>
+    </royalAid>
+  </RoyalTitlePermitDef>
+	
 </Defs>
