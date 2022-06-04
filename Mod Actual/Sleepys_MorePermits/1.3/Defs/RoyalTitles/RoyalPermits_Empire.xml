@@ -328,18 +328,18 @@
 	<!-- Short Range Transport Shuttle -->
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle1</defName>
-    <label>call short range shuttle</label>
-    <description>Call a short range shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 35 world tiles.</description>
+    <label>call priority shuttle</label>
+    <description>Call a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for elite titles and it will cost two permit points in total for it to be available to you. It however will be ready to use again quickly.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
     <minTitle>Knight</minTitle>
     <faction>Empire</faction>
-    <permitPointCost>1</permitPointCost>
+    <permitPointCost>2</permitPointCost>
     <cooldownDays>20</cooldownDays>
     <usableOnWorldMap>true</usableOnWorldMap>
     <uiPosition>(0,18)</uiPosition>
     <royalAid>
       <favorCost>4</favorCost>
-      <targetingRange>22.4</targetingRange>
+      <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
   </RoyalTitlePermitDef>
@@ -348,7 +348,7 @@
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle2</defName>
     <label>call quick reaction shuttle</label>
-    <description>Call a rapid quick reaction short range shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 35 world tiles. It'll be ready to use again very quickly.</description>
+    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. It'll be ready to use again extremely quickly.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
     <minTitle>Knight</minTitle>
     <faction>Empire</faction>
@@ -359,7 +359,7 @@
     <uiPosition>(1,18)</uiPosition>
     <royalAid>
       <favorCost>4</favorCost>
-      <targetingRange>22.4</targetingRange>
+      <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
   </RoyalTitlePermitDef>
