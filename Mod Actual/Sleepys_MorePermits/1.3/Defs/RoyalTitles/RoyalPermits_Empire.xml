@@ -325,7 +325,7 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
-	<!-- Short Range Transport Shuttle -->
+	<!-- Backup Transport Shuttle -->
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle1</defName>
     <label>call priority shuttle</label>
@@ -338,13 +338,13 @@
     <usableOnWorldMap>true</usableOnWorldMap>
     <uiPosition>(0,18)</uiPosition>
     <royalAid>
-      <favorCost>4</favorCost>
+      <favorCost>2</favorCost>
       <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
   </RoyalTitlePermitDef>
   
-  <!-- Quick Short Range Transport Shuttle -->
+  <!-- Quick Transport Shuttle -->
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle2</defName>
     <label>call quick reaction shuttle</label>
@@ -358,7 +358,7 @@
 	<prerequisite>SLP_CallTransportShuttle1</prerequisite>
     <uiPosition>(1,18)</uiPosition>
     <royalAid>
-      <favorCost>4</favorCost>
+      <favorCost>1</favorCost>
       <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>

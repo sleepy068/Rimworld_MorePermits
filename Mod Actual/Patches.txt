@@ -1,10 +1,10 @@
-Update v1.0.3
+Update v1.0.5
 
 Additions:
-N/A
+Added 2 new transport shuttle permits. Balanced but provides a means of quicker transport around the world.
 
 Changes:
-Balanced cooldown cost for call stellic team (Both types)(Increased from 60 Days to 80 Days)
+N/A
 
 Localisation:
 N/A
