@@ -329,7 +329,7 @@
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle1</defName>
     <label>call priority shuttle</label>
-    <description>Call a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for elite titles and it will cost two permit points in total for it to be available to you. It however will be ready to use again quickly.</description>
+    <description>SPECIAL PERMIT: Special permits have an additional cost requirement due to the permit been reversed for specific persons and various administrative overheads. This permit requires a total of two permit points. \n\nCall a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for specific missions and targets and as such, it will be available again far quicker then a standard permit shuttle.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
     <minTitle>Knight</minTitle>
     <faction>Empire</faction>
@@ -338,7 +338,7 @@
     <usableOnWorldMap>true</usableOnWorldMap>
     <uiPosition>(0,18)</uiPosition>
     <royalAid>
-      <favorCost>2</favorCost>
+      <favorCost>4</favorCost>
       <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
@@ -348,7 +348,7 @@
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle2</defName>
     <label>call quick reaction shuttle</label>
-    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. It'll be ready to use again extremely quickly.</description>
+    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This shuttle is almost entirely dedicate to your use, requiring some time to return to base to refuel, repair when needed and comply with emergency orders, as such it'll be ready to use again extremely quickly.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
     <minTitle>Knight</minTitle>
     <faction>Empire</faction>
@@ -358,7 +358,7 @@
 	<prerequisite>SLP_CallTransportShuttle1</prerequisite>
     <uiPosition>(1,18)</uiPosition>
     <royalAid>
-      <favorCost>1</favorCost>
+      <favorCost>4</favorCost>
       <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
