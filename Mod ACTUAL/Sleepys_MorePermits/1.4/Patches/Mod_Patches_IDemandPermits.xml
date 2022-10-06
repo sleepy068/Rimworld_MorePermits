@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<!-- My mod clashes Unlock Working Emperor's new permits, they overlap their positions, this patch will move my permits down one so that all can be seen again -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>I Demand Permits</li>
+		</mods>
+		
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP1"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,10)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP1a"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,10)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP1b"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,11)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP2"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,12)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP2a"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,12)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP2b"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,13)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP2c"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,14)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,15)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3a"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,15)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP3b"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,16)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,17)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4a"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,18)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP4b"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,17)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_CallTransportShuttle1"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,19)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_CallTransportShuttle2"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(1,19)</uiPosition>
+					</value>
+				</li>
+				
+				<!-- Royal Arsenel and I Demand Permits override positions, this will clean up the permit tab if you use these two mods too -->
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Royal Arsenal: Extra Permits</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="RA_AntigrainSellDrop"]/uiPosition</xpath>
+								<value>
+								<uiPosition>(2,6)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="RA_AdvancedComponentDrop"]/uiPosition</xpath>
+								<value>
+								<uiPosition>(2,0)</uiPosition>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</li>
+			</operations>
+		</match>
+		
+	</Operation>
+</Patch>

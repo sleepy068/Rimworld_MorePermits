@@ -10,24 +10,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallTroopers workerCallTroopers = this;
+			string reason;
+			if (workerCallTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallTroopersNumTroopers".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallTroopers(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallTroopers.def.LabelCap + " (" + "CommandCallTroopersNumTroopers".Translate((NamedArgument)workerCallTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallTroopers(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallTroopers(Pawn pawn, Map map, Faction faction, bool free)
@@ -56,24 +53,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallJanissary workerCallJTroopers = this;
+			string reason;
+			if (workerCallJTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallJTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallJanissariesNumJanissaries".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallJanissary(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallJTroopers.def.LabelCap + " (" + "CommandCallJanissariesNumJanissaries".Translate((NamedArgument)workerCallJTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallJTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallJanissary(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallJanissary(Pawn pawn, Map map, Faction faction, bool free)
@@ -102,24 +96,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallCataphract workerCallCTroopers = this;
+			string reason;
+			if (workerCallCTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallCTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallCataphractsNumCataphracts".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallCataphract(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallCTroopers.def.LabelCap + " (" + "CommandCallCataphractsNumCataphracts".Translate((NamedArgument)workerCallCTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallCTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallCataphract(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallCataphract(Pawn pawn, Map map, Faction faction, bool free)
@@ -148,24 +139,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallStellicGuardMelee workerCallSGMTroopers = this;
+			string reason;
+			if (workerCallSGMTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallSGMTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallStellicMGNumStellicMG".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.CallStellicGuardMelee(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallSGMTroopers.def.LabelCap + " (" + "CommandCallStellicMGNumStellicMG".Translate((NamedArgument)workerCallSGMTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallSGMTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.CallStellicGuardMelee(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void CallStellicGuardMelee(Pawn pawn, Map map, Faction faction, bool free)
@@ -194,24 +182,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallStellicGuardRanged workerCallSGRTroopers = this;
+			string reason;
+			if (workerCallSGRTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallSGRTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallStellicRGNumStellicRG".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.CallStellicGuardRanged(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallSGRTroopers.def.LabelCap + " (" + "CommandCallStellicRGNumStellicRG".Translate((NamedArgument)workerCallSGRTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallSGRTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.CallStellicGuardRanged(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void CallStellicGuardRanged(Pawn pawn, Map map, Faction faction, bool free)
@@ -240,24 +225,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallChampions workerCallChampTroopers = this;
+			string reason;
+			if (workerCallChampTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallChampTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallNumChampions".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallChampions(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallChampTroopers.def.LabelCap + " (" + "CommandCallNumChampions".Translate((NamedArgument)workerCallChampTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallChampTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallChampions(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallChampions(Pawn pawn, Map map, Faction faction, bool free)
@@ -286,24 +268,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallParamedics workerCallParaCTroopers = this;
+			string reason;
+			if (workerCallParaCTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallParaCTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallNumParamedics".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallParamedics(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallParaCTroopers.def.LabelCap + " (" + "CommandCallNumParamedics".Translate((NamedArgument)workerCallParaCTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallParaCTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallParamedics(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallParamedics(Pawn pawn, Map map, Faction faction, bool free)
@@ -332,24 +311,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallCombatParamedics workerCallParaSoTroopers = this;
+			string reason;
+			if (workerCallParaSoTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallParaSoTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallNumCombatParamedics".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallCombatParamedics(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallParaSoTroopers.def.LabelCap + " (" + "CommandCallNumCombatParamedics".Translate((NamedArgument)workerCallParaSoTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallParaSoTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallCombatParamedics(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallCombatParamedics(Pawn pawn, Map map, Faction faction, bool free)
@@ -378,24 +354,21 @@ namespace RimworldSLP_MorePermits
 	{
 		public override IEnumerable<FloatMenuOption> GetRoyalAidOptions(Map map, Pawn pawn, Faction faction)
 		{
-			string t;
-			if (this.AidDisabled(map, pawn, faction, out t))
+			RoyalTitlePermitWorker_SLP_CallSurgeons workerCallParaSuTroopers = this;
+			string reason;
+			if (workerCallParaSuTroopers.AidDisabled(map, pawn, faction, out reason))
 			{
-				yield return new FloatMenuOption(this.def.LabelCap + ": " + t, null, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-				yield break;
+				yield return new FloatMenuOption((string)(workerCallParaSuTroopers.def.LabelCap + ": " + reason), (Action)null);
 			}
-			Action action = null;
-			string label = this.def.LabelCap + " (" + "CommandCallNumSurgeons".Translate(this.def.royalAid.pawnCount) + "): ";
-			bool free;
-			if (base.FillAidOption(pawn, faction, ref label, out free))
+			else
 			{
-				action = delegate ()
-				{
-					this.SLPCallSurgeons(pawn, map, faction, free);
-				};
+				Action action = (Action)null;
+				string description = (string)(workerCallParaSuTroopers.def.LabelCap + " (" + "CommandCallNumSurgeons".Translate((NamedArgument)workerCallParaSuTroopers.def.royalAid.pawnCount) + "): ");
+				bool free;
+				if (workerCallParaSuTroopers.FillAidOption(pawn, faction, ref description, out free))
+					action = (Action)(() => this.SLPCallSurgeons(pawn, map, faction, free));
+				yield return new FloatMenuOption(description, action, faction.def.FactionIcon, faction.Color);
 			}
-			yield return new FloatMenuOption(label, action, faction.def.FactionIcon, faction.Color, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0);
-			yield break;
 		}
 
 		private void SLPCallSurgeons(Pawn pawn, Map map, Faction faction, bool free)

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<!-- Add additional permits if you have Unlock Working Emperor -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[Royalty] Unlock Working Emperor (Continued)</li>
+		</mods>
+		
+		<match Class="PatchOperationSequence">
+			<operations>
+			
+				<!-- 2 Stellic Guards (Melee)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						<RoyalTitlePermitDef>
+						<defName>CallMilitaryAidSLP_ADD_UE1a</defName>
+						<label>call stellic melee team</label>
+						<description>Call a group of 2 stellic guards specialised in melee to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but stellic guards are expected to give their lives to protect a Stellarch of the Empire, so you will receive no penalty if they are killed in battle.\n\nStellic Guards are the elite troopers of the empire. They are exceptionally skilled and usually have psycaster abilities of their own but they may arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+						<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardMelee</workerClass>
+						<minTitle>Stellarch</minTitle>
+						<faction>Empire</faction>
+						<permitPointCost>1</permitPointCost>
+						<!-- Patch UI Position if other permit mods used -->
+						<uiPosition>(0,20)</uiPosition>
+						<royalAid>
+						<favorCost>10</favorCost>
+						<pawnKindDef>Empire_Fighter_StellicGuardMelee</pawnKindDef>
+						<pawnCount>2</pawnCount>
+						<aidDurationDays>4</aidDurationDays>
+						</royalAid>
+						<cooldownDays>80</cooldownDays>
+						</RoyalTitlePermitDef>
+					</value>
+				</li>
+				
+				<!-- 2 Stellic Guards (Ranged)(4 Days) - CallMilitaryAidSLP_ADD_UE1b -->
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						<RoyalTitlePermitDef>
+						<defName>CallMilitaryAidSLP_ADD_UE1b</defName>
+						<label>call stellic ranged team</label>
+						<description>Call a group of 2 stellic guards specialised in ranged combat to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but stellic guards are expected to give their lives to protect a Stellarch of the Empire, so you will receive no penalty if they are killed in battle.\n\nStellic Guards are the elite troopers of the empire. They are exceptionally skilled and usually have psycaster abilities of their own but they may arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+						<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardRanged</workerClass>
+						<minTitle>Stellarch</minTitle>
+						<faction>Empire</faction>
+						<permitPointCost>1</permitPointCost>
+						<!-- Patch UI Position if other permit mods used -->
+						<uiPosition>(1,20)</uiPosition>
+						<royalAid>
+						<favorCost>10</favorCost>
+						<pawnKindDef>Empire_Fighter_StellicGuardRanged</pawnKindDef>
+						<pawnCount>2</pawnCount>
+						<aidDurationDays>4</aidDurationDays>
+						</royalAid>
+						<cooldownDays>80</cooldownDays>
+						</RoyalTitlePermitDef>
+					</value>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+</Patch>
