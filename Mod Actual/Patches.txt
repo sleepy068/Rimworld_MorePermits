@@ -1,11 +1,10 @@
-Update v1.0.8
+Update v1.0.9 Build 25/04/23
 
 Additions:
 N/A
 
 Changes:
-1.4 Compatiablity (Unstable Branch)
-Biotech Compatiablity (Detected from XML Changes, additional changes may occur on release breaking this mod)
+N/A
 
 Localisation:
 N/A
