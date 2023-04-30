@@ -23,7 +23,7 @@
 						<faction>Empire</faction>
 						<permitPointCost>1</permitPointCost>
 						<!-- Patch UI Position if other permit mods used -->
-						<uiPosition>(0,20)</uiPosition>
+						<uiPosition>(0,21)</uiPosition>
 						<royalAid>
 						<favorCost>10</favorCost>
 						<pawnKindDef>Empire_Fighter_StellicGuardMelee</pawnKindDef>
@@ -48,7 +48,7 @@
 						<faction>Empire</faction>
 						<permitPointCost>1</permitPointCost>
 						<!-- Patch UI Position if other permit mods used -->
-						<uiPosition>(1,20)</uiPosition>
+						<uiPosition>(1,21)</uiPosition>
 						<royalAid>
 						<favorCost>10</favorCost>
 						<pawnKindDef>Empire_Fighter_StellicGuardRanged</pawnKindDef>

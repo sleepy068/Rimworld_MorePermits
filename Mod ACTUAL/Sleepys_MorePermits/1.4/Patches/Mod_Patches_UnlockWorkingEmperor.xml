@@ -114,6 +114,13 @@
 					</value>
 				</li>
 				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_DrugDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,20)</uiPosition>
+					</value>
+				</li>
+				
 				<!-- UnlockWorkingEmperor and Royal Arsenel override positions, this will clean up the permit tab if you use these three mods too -->
 				<li Class="PatchOperationFindMod">
 					<mods>
@@ -285,6 +292,13 @@
 								<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_CallTransportShuttle2"]/uiPosition</xpath>
 								<value>
 									<uiPosition>(1,22)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_DrugDrop"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(0,23)</uiPosition>
 								</value>
 							</li>
 							

@@ -114,6 +114,13 @@
 					</value>
 				</li>
 				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_DrugDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,20)</uiPosition>
+					</value>
+				</li>
+				
 				<!-- Royal Arsenel and I Demand Permits override positions, this will clean up the permit tab if you use these two mods too -->
 				<li Class="PatchOperationFindMod">
 					<mods>
