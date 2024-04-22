@@ -348,7 +348,7 @@
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle2</defName>
     <label>call quick reaction shuttle</label>
-    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This shuttle is almost entirely dedicate to your use, requiring some time to return to base to refuel, repair when needed and comply with emergency orders, as such it'll be ready to use again extremely quickly.</description>
+    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This shuttle is almost entirely dedicated to your use, requiring some time to return to base to refuel, repair when needed and comply with emergency orders, as such it'll be ready to use again extremely quickly.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
     <minTitle>Knight</minTitle>
     <faction>Empire</faction>
