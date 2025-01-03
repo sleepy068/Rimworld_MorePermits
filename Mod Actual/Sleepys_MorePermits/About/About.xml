@@ -11,8 +11,9 @@
     </supportedVersions>
 
     <description>
-[img]https://i.imgur.com/JDaeY60.png[/img]
-[h2]Sleepy's More Permits (v1.0.9)[/h2]
+	[img]https://i.imgur.com/JDaeY60.png[/img]
+[h2]Sleepy's More Permits[/h2]
+Modding is easier together, this mod is licensed under [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0 UNIVERSAL[/url]. 
 
 A simple mod that adds new highly balanced permits to the game to be used by your royals.
 
@@ -77,7 +78,7 @@ I have made patches that cleans up the permit tab if you are using any combinati
 [b]Compatibility with Additional Content[/b]
 I have made patches that adds additional content inline with the scope of this mod if you are using the following mods.
 - [Royalty] Unlock Working Emperor (Continued) or Unlock Emperor (Continued)
-Adds an additional two new permits (Call Stellic Melee Team &amp; Call Stellic Ranged Team).
+Adds an additional two new permits (Call Stellic Melee Team + Call Stellic Ranged Team).
 
 [img]https://i.imgur.com/gghc3iQ.png[/img]
 [b]Conflicts[/b]
@@ -86,7 +87,7 @@ I am adding patches to ensure my mod cleans the permit tab up if it detects thes
 
 [img]https://i.imgur.com/31kQWwH.png[/img]
 [b]Known Issues[/b]
-Cataphracts can sometimes spawn with single use weapons like a triple rocket or doomsday. Using this means they then can only punch enemies for the remaining time they have left if they use the weapon, which isn't ideal (the weapon is nice though!). A fix would mean they cant spawn with that weapon anymore though, which might be worse off. I'll toss this up.
+- [strike]Cataphracts can sometimes spawn with single use weapons.[/strike] No longer appears to be an issue (1.5)
 
 [img]https://i.imgur.com/WokZwPP.png[/img]
 [b]Language Support[/b]
@@ -102,7 +103,7 @@ Github:
 https://github.com/sleepy068/Rimworld_MorePermits/releases/
 
 Please post any issue reports to my Github. I appreciate any feedback but please keep in mind I have a goal in mind for the content I am adding so what I consider balanced may not always be what you'd consider balanced.
-    </description>
+</description>
 
     <modDependencies>
 	<li>

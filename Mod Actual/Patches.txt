@@ -7,7 +7,7 @@ Changes:
 N/A
 
 Localisation:
-N/A
+Updated mod description so it matches the steam description
 
 Bug Fixes:
 N/A
