@@ -10,5 +10,10 @@
   <CommandCallNumParamedics>{0} paramedics</CommandCallNumParamedics>
   <CommandCallNumCombatParamedics>{0} combat paramedics</CommandCallNumCombatParamedics>
   <CommandCallNumSurgeons>{0} surgeons</CommandCallNumSurgeons>
+  <CommandCallAlpineNumAlpine>{0} alpine rangers</CommandCallAlpineNumAlpine>
+  <CommandCallDesertNumDesert>{0} desert rangers</CommandCallDesertNumDesert>
+  
+  <SLP_TemperateTooHigh>temperature too high for alpine rangers to deploy</SLP_TemperateTooHigh>
+  <SLP_TemperateTooLow>temperature too low for desert rangers to deploy</SLP_TemperateTooLow>
   
 </LanguageData>

@@ -121,6 +121,20 @@
 					</value>
 				</li>
 				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_ALP1"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,21)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_DES1"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,22)</uiPosition>
+					</value>
+				</li>
+				
 				<li Class="PatchOperationFindMod">
 					<mods>
 						<li>Royal Arsenal: Extra Permits</li>
@@ -298,6 +312,20 @@
 								<xpath>/Defs/RoyalTitlePermitDef[defName="SLP_DrugDrop"]/uiPosition</xpath>
 								<value>
 									<uiPosition>(0,23)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_ALP1"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(0,24)</uiPosition>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/RoyalTitlePermitDef[defName="CallMilitaryAidSLP_DES1"]/uiPosition</xpath>
+								<value>
+									<uiPosition>(0,25)</uiPosition>
 								</value>
 							</li>
 							

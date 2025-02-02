@@ -344,7 +344,7 @@
     </royalAid>
   </RoyalTitlePermitDef>
   
-  <!-- Quick Transport Shuttle -->
+    <!-- Quick Transport Shuttle -->
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle2</defName>
     <label>call quick reaction shuttle</label>
@@ -364,20 +364,58 @@
     </royalAid>
   </RoyalTitlePermitDef>
   
-  <!-- Drug Drop -->
-  <RoyalTitlePermitDef ParentName="DropResourcesBase">
-    <defName>SLP_DrugDrop</defName>
-    <label>drug drop</label>
-    <description>Call for a drop of 8 wake up and 4 go juice.</description>
-    <minTitle>Acolyte</minTitle>
-    <uiPosition>(0,19)</uiPosition>
-    <royalAid>
-      <itemsToDrop>
-        <WakeUp>8</WakeUp>
-		<GoJuice>4</GoJuice>
-      </itemsToDrop>
-      <favorCost>4</favorCost>
-    </royalAid>
-  </RoyalTitlePermitDef>
+    <!-- Drug Drop -->
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>SLP_DrugDrop</defName>
+		<label>drug drop</label>
+		<description>Call for a drop of 8 wake up and 4 go juice.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,19)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<WakeUp>8</WakeUp>
+			<GoJuice>4</GoJuice>
+		  </itemsToDrop>
+		  <favorCost>4</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+    <!-- 2 Alpine Rangers (4 Days) - CallMilitaryAidSLP_ALP1 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_ALP1</defName>
+		<label>call alpine rangers</label>
+		<description>Call a group of 2 professional alpine rangers to assist you for 4 days. These rangers are specifically trained and equipped for extreme cold environments and can be called in regardless of how low the local temperature is. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallAlpineRangers</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,20)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>SLP_Empire_Fighter_AlpineRanger</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Desert Rangers (4 Days) - CallMilitaryAidSLP_DES1 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_DES1</defName>
+		<label>call desert rangers</label>
+		<description>Call a group of 2 professional desert rangers to assist you for 4 days. These rangers are specifically trained and equipped for extreme heat environments and can be called in regardless of how high the local temperature is. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallDesertRangers</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,21)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>SLP_Empire_Fighter_DesertRanger</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
 	
 </Defs>

@@ -13,7 +13,7 @@
 				<li Class="PatchOperationReplace">
 					<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
 					<value>
-						<uiPosition>(0,20)</uiPosition>
+						<uiPosition>(0,22)</uiPosition>
 					</value>
 				</li>
 				
