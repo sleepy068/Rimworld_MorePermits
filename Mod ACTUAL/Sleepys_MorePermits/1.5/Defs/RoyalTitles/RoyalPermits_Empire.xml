@@ -44,13 +44,11 @@
 	Empire_Fighter_StellicGuardMelee
 	-->
 	
-	<!-- ======================================== -->
-	<!-- ============= Core Content ============= -->
-	<!-- ======================================== -->
-	
-	<!-- Call Soldier Support(Soldiers that you can control like the labourer teams) -->
+	<!-- ======================================== Trooper Support ========================================-->
+	<!-- Call Soldier Support -->
 	<!-- ======================================== -->
 	<!-- 2 Light Troopers (4 Days) - CallMilitaryAidSLP1 -->
+	<!-- UI 0,9 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1</defName>
 		<label>call trooper team</label>
@@ -59,7 +57,6 @@
 		<minTitle>Knight</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(0,9)</uiPosition>
 		<royalAid>
 		<favorCost>4</favorCost>
@@ -71,6 +68,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Light Troopers (8 Days) - CallMilitaryAidSLP1a -->
+	<!-- UI 1,9 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1a</defName>
 		<label>call enduring trooper team</label>
@@ -80,7 +78,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP1</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,9)</uiPosition>
 		<royalAid>
 		<favorCost>8</favorCost>
@@ -92,6 +89,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 4 Light Troopers (4 Days) - CallMilitaryAidSLP1b -->
+	<!-- UI 1,10 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP1b</defName>
 		<label>call large trooper team</label>
@@ -101,7 +99,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP1</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,10)</uiPosition>
 		<royalAid>
 		<favorCost>8</favorCost>
@@ -112,9 +109,10 @@
 		<cooldownDays>45</cooldownDays>
 	</RoyalTitlePermitDef>
 	
-	<!-- Call Janissary Support (Soldiers that you can control like the labourer teams) -->
+	<!-- Call Janissary Support -->
 	<!-- ======================================== -->
 	<!-- 2 Janissaries (4 Days) - CallMilitaryAidSLP2 -->
+	<!-- UI 0,11 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2</defName>
 		<label>call janissary team</label>
@@ -123,7 +121,6 @@
 		<minTitle>Baron</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(0,11)</uiPosition>
 		<royalAid>
 		<favorCost>6</favorCost>
@@ -135,6 +132,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Janissaries (8 Days) - CallMilitaryAidSLP2a -->
+	<!-- UI 1,11 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2a</defName>
 		<label>call enduring janissary team</label>
@@ -144,7 +142,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP2</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,11)</uiPosition>
 		<royalAid>
 		<favorCost>12</favorCost>
@@ -156,6 +153,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 4 Janissaries (4 Days) - CallMilitaryAidSLP2b -->
+	<!-- UI 1,12 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2b</defName>
 		<label>call large janissary team</label>
@@ -165,7 +163,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP2</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,12)</uiPosition>
 		<royalAid>
 		<favorCost>12</favorCost>
@@ -177,6 +174,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Cataphracts (4 Days) - CallMilitaryAidSLP2c -->
+	<!-- UI 0,13 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP2c</defName>
 		<label>call cataphract team</label>
@@ -185,9 +183,8 @@
 		<minTitle>Count</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
-		<prerequisite>CallMilitaryAidSLP2</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
-		<uiPosition>(1,13)</uiPosition>
+		<!-- <prerequisite>CallMilitaryAidSLP2</prerequisite> -->
+		<uiPosition>(0,13)</uiPosition>
 		<royalAid>
 		<favorCost>8</favorCost>
 		<pawnKindDef>Empire_Fighter_Cataphract</pawnKindDef>
@@ -197,9 +194,10 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
-	<!-- Call Champion Support (Soldiers that you can control like the labourer teams) -->
+	<!-- Call Champion Support -->
 	<!-- ======================================== -->
 	<!-- 2 Champions (4 Days) - CallMilitaryAidSLP3 -->
+	<!-- UI 0,14 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP3</defName>
 		<label>call champion team</label>
@@ -208,7 +206,6 @@
 		<minTitle>Praetor</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(0,14)</uiPosition>
 		<royalAid>
 		<favorCost>6</favorCost>
@@ -220,6 +217,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Champions (8 Days) - CallMilitaryAidSLP3a -->
+	<!-- UI 1,14 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP3a</defName>
 		<label>call enduring champion team</label>
@@ -229,7 +227,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP3</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,14)</uiPosition>
 		<royalAid>
 		<favorCost>12</favorCost>
@@ -241,6 +238,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 4 Champions (4 Days) - CallMilitaryAidSLP3b -->
+	<!-- UI 1,15 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP3b</defName>
 		<label>call large champion team</label>
@@ -250,7 +248,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP3</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,15)</uiPosition>
 		<royalAid>
 		<favorCost>12</favorCost>
@@ -261,9 +258,10 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
-	<!-- Call Paramedic Support (Workers that you can control like the labourer teams) -->
+	<!-- Call Paramedic Support -->
 	<!-- ======================================== -->
 	<!-- 2 Paramedics (4 Days) - CallMilitaryAidSLP4a -->
+	<!-- UI 0,16 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP4</defName>
 		<label>call paramedics</label>
@@ -272,7 +270,6 @@
 		<minTitle>Knight</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(0,16)</uiPosition>
 		<royalAid>
 		<favorCost>5</favorCost>
@@ -284,6 +281,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Combat Paramedics (4 Days) - CallMilitaryAidSLP4a -->
+	<!-- UI 1,16 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP4a</defName>
 		<label>call combat paramedics</label>
@@ -293,7 +291,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP4</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,16)</uiPosition>
 		<royalAid>
 		<favorCost>7</favorCost>
@@ -305,6 +302,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Surgeons (4 Days) - CallMilitaryAidSLP4b -->
+	<!-- UI 1,17 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP4b</defName>
 		<label>call surgery team</label>
@@ -314,7 +312,6 @@
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
 		<prerequisite>CallMilitaryAidSLP4</prerequisite>
-		<!-- Patch UI Position if other permit mods used -->
 		<uiPosition>(1,17)</uiPosition>
 		<royalAid>
 		<favorCost>7</favorCost>
@@ -325,62 +322,10 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
-	<!-- Backup Transport Shuttle -->
-	<RoyalTitlePermitDef>
-    <defName>SLP_CallTransportShuttle1</defName>
-    <label>call priority shuttle</label>
-    <description>SPECIAL PERMIT: Special permits have an additional cost requirement due to the permit been reversed for specific persons and various administrative overheads. This permit requires a total of two permit points. \n\nCall a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for specific missions and targets and as such, it will be available again far quicker then a standard permit shuttle.</description>
-    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
-    <minTitle>Knight</minTitle>
-    <faction>Empire</faction>
-    <permitPointCost>2</permitPointCost>
-    <cooldownDays>20</cooldownDays>
-    <usableOnWorldMap>true</usableOnWorldMap>
-    <uiPosition>(0,18)</uiPosition>
-    <royalAid>
-      <favorCost>4</favorCost>
-      <targetingRange>44.9</targetingRange>
-      <targetingRequireLOS>false</targetingRequireLOS>
-    </royalAid>
-  </RoyalTitlePermitDef>
-  
-    <!-- Quick Transport Shuttle -->
-	<RoyalTitlePermitDef>
-    <defName>SLP_CallTransportShuttle2</defName>
-    <label>call quick reaction shuttle</label>
-    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This shuttle is almost entirely dedicated to your use, requiring some time to return to base to refuel, repair when needed and comply with emergency orders, as such it'll be ready to use again extremely quickly.</description>
-    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
-    <minTitle>Knight</minTitle>
-    <faction>Empire</faction>
-    <permitPointCost>1</permitPointCost>
-    <cooldownDays>7</cooldownDays>
-    <usableOnWorldMap>true</usableOnWorldMap>
-	<prerequisite>SLP_CallTransportShuttle1</prerequisite>
-    <uiPosition>(1,18)</uiPosition>
-    <royalAid>
-      <favorCost>4</favorCost>
-      <targetingRange>44.9</targetingRange>
-      <targetingRequireLOS>false</targetingRequireLOS>
-    </royalAid>
-  </RoyalTitlePermitDef>
-  
-    <!-- Drug Drop -->
-	<RoyalTitlePermitDef ParentName="DropResourcesBase">
-		<defName>SLP_DrugDrop</defName>
-		<label>drug drop</label>
-		<description>Call for a drop of 8 wake up and 4 go juice.</description>
-		<minTitle>Acolyte</minTitle>
-		<uiPosition>(0,19)</uiPosition>
-		<royalAid>
-		  <itemsToDrop>
-			<WakeUp>8</WakeUp>
-			<GoJuice>4</GoJuice>
-		  </itemsToDrop>
-		  <favorCost>4</favorCost>
-		</royalAid>
-	</RoyalTitlePermitDef>
-	
+	<!-- Call Misc Support -->
+	<!-- ======================================== -->
     <!-- 2 Alpine Rangers (4 Days) - CallMilitaryAidSLP_ALP1 -->
+	<!-- UI 0,20 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP_ALP1</defName>
 		<label>call alpine rangers</label>
@@ -400,6 +345,7 @@
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Desert Rangers (4 Days) - CallMilitaryAidSLP_DES1 -->
+	<!-- UI 1,20 -->
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP_DES1</defName>
 		<label>call desert rangers</label>
@@ -408,7 +354,7 @@
 		<minTitle>Baron</minTitle>
 		<faction>Empire</faction>
 		<permitPointCost>1</permitPointCost>
-		<uiPosition>(0,21)</uiPosition>
+		<uiPosition>(1,20)</uiPosition>
 		<royalAid>
 		<favorCost>6</favorCost>
 		<pawnKindDef>SLP_Empire_Fighter_DesertRanger</pawnKindDef>
@@ -418,4 +364,104 @@
 		<cooldownDays>60</cooldownDays>
 	</RoyalTitlePermitDef>
 	
+	<!-- 2 Royal Guards (Melee)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
+	<!-- UI 0,21 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_ADD_UE1a</defName>
+		<label>call royal melee team</label>
+		<description>Call a group of 2 royal guards specialised in melee to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect a title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and usually have psycaster abilities of their own but they may arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardMelee</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,21)</uiPosition>
+		<royalAid>
+		<favorCost>10</favorCost>
+		<pawnKindDef>Empire_Fighter_StellicGuardMelee</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>80</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Royal Guards (Ranged)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
+	<!-- UI 1,21 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_ADD_UE1b</defName>
+		<label>call royal ranged team</label>
+		<description>Call a group of 2 royal guards specialised in ranged combat to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and usually have psycaster abilities of their own but they may arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardRanged</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,21)</uiPosition>
+		<royalAid>
+		<favorCost>10</favorCost>
+		<pawnKindDef>Empire_Fighter_StellicGuardRanged</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>80</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- ======================================== Economy Support ========================================-->
+	<!-- Drug Drop -->
+	<!-- UI 0,19 -->
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>SLP_DrugDrop</defName>
+		<label>drug drop</label>
+		<description>Call for a drop of 8 wake up and 4 go juice.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,19)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<WakeUp>8</WakeUp>
+			<GoJuice>4</GoJuice>
+		  </itemsToDrop>
+		  <favorCost>4</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<!-- ======================================== Transport Support ========================================-->
+	<!-- Backup Transport Shuttle -->
+	<!-- UI 0,18 -->
+	<RoyalTitlePermitDef>
+    <defName>SLP_CallTransportShuttle1</defName>
+    <label>call priority shuttle</label>
+    <description>SPECIAL PERMIT: Special permits have an additional cost requirement due to the permit been reversed for specific persons and various administrative overheads. This permit requires a total of two permit points. \n\nCall a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for specific missions and targets and as such, it will be available again far quicker then a standard permit shuttle.</description>
+    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+    <minTitle>Praetor</minTitle>
+    <faction>Empire</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>20</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+    <uiPosition>(0,18)</uiPosition>
+    <royalAid>
+      <favorCost>4</favorCost>
+      <targetingRange>44.9</targetingRange>
+      <targetingRequireLOS>false</targetingRequireLOS>
+    </royalAid>
+  </RoyalTitlePermitDef>
+  
+    <!-- Quick Transport Shuttle -->
+	<!-- UI 1,18 -->
+	<RoyalTitlePermitDef>
+    <defName>SLP_CallTransportShuttle2</defName>
+    <label>call quick reaction shuttle</label>
+    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This shuttle is almost entirely dedicated to your use, requiring some time to return to base to refuel, repair when needed and comply with emergency orders, as such it'll be ready to use again extremely quickly.</description>
+    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+    <minTitle>Praetor</minTitle>
+    <faction>Empire</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>7</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+	<prerequisite>SLP_CallTransportShuttle1</prerequisite>
+    <uiPosition>(1,18)</uiPosition>
+    <royalAid>
+      <favorCost>4</favorCost>
+      <targetingRange>44.9</targetingRange>
+      <targetingRequireLOS>false</targetingRequireLOS>
+    </royalAid>
+  </RoyalTitlePermitDef>
+  
 </Defs>

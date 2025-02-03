@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Patch>
-	<!-- My mod clashes Ultratech Altered Carbon Remastered new permits, they overlap their positions, this patch will move my permits down one so that all can be seen again -->
+	<!-- Cleans up overlaps with this mod -->
 	<Operation Class="PatchOperationFindMod">
 		<mods>
 			<li>Ultratech: Altered Carbon Remastered</li>
@@ -13,42 +13,10 @@
 				<li Class="PatchOperationReplace">
 					<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
 					<value>
-						<uiPosition>(0,22)</uiPosition>
+						<uiPosition>(2,4)</uiPosition>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationFindMod">
-					<mods>
-						<li>[Royalty] Unlock Working Emperor (Continued)</li>
-					</mods>
-					<match Class="PatchOperationSequence">
-						<operations>
-							<li Class="PatchOperationReplace">
-								<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
-								<value>
-								<uiPosition>(0,24)</uiPosition>
-								</value>
-							</li>
-						</operations>
-					</match>
-				</li>
-				
-				<li Class="PatchOperationFindMod">
-					<mods>
-						<li>Unlock Emperor (Continued)</li>
-					</mods>
-					<match Class="PatchOperationSequence">
-						<operations>
-							<li Class="PatchOperationReplace">
-								<xpath>/Defs/RoyalTitlePermitDef[defName="UT_CallNeuroformers"]/uiPosition</xpath>
-								<value>
-								<uiPosition>(0,24)</uiPosition>
-								</value>
-							</li>
-						</operations>
-					</match>
-				</li>
-				
+
 			</operations>
 		</match>
 	</Operation>
