@@ -369,7 +369,7 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP_ADD_UE1a</defName>
 		<label>call royal melee team</label>
-		<description>Call a group of 2 royal guards specialised in melee to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect a title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and usually have psycaster abilities of their own but they may arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+		<description>Call a group of 2 royal guards specialised in melee to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect a title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and may have psycaster abilities of their own but they can arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
 		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardMelee</workerClass>
 		<minTitle>Count</minTitle>
 		<faction>Empire</faction>
@@ -389,7 +389,7 @@
 	<RoyalTitlePermitDef>
 		<defName>CallMilitaryAidSLP_ADD_UE1b</defName>
 		<label>call royal ranged team</label>
-		<description>Call a group of 2 royal guards specialised in ranged combat to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and usually have psycaster abilities of their own but they may arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+		<description>Call a group of 2 royal guards specialised in ranged combat to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and may have psycaster abilities of their own but they can arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
 		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardRanged</workerClass>
 		<minTitle>Count</minTitle>
 		<faction>Empire</faction>
