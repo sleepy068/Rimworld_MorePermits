@@ -428,7 +428,7 @@
 	<RoyalTitlePermitDef>
     <defName>SLP_CallTransportShuttle1</defName>
     <label>call priority shuttle</label>
-    <description>SPECIAL PERMIT: Special permits have an additional cost requirement due to the permit been reversed for specific persons and various administrative overheads. This permit requires a total of two permit points. \n\nCall a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for specific missions and targets and as such, it will be available again far quicker then a standard permit shuttle.</description>
+    <description>Call a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for specific missions and targets and as such, it will be available again far quicker then a standard permit shuttle.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
     <minTitle>Praetor</minTitle>
     <faction>Empire</faction>

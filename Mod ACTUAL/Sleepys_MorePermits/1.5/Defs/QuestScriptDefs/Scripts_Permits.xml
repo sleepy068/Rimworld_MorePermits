@@ -147,7 +147,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -349,7 +349,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -551,7 +551,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -606,8 +606,8 @@
     </root>
   </QuestScriptDef>
 
-  <!-- Call Stellic Guard (Melee)
-  for RoyalTitlePermitWorker_SLP_CallCataphract -->
+  <!-- Call Royal Guard (Melee)
+  for Permit_SLP_CallStellicGuardMelee -->
   <QuestScriptDef>
     <defName>Permit_SLP_CallStellicGuardMelee</defName>
     <isRootSpecial>true</isRootSpecial>
@@ -690,8 +690,8 @@
           </parms>
         </li>
         <li Class="QuestNode_Letter">
-          <label TKey="LetterLabelLaborersArrived">Stellic Guard (Melee) arrived</label>
-          <text TKey="LetterTextLaborersArrived">The stellic guard from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <label TKey="LetterLabelLaborersArrived">Royal Guard (Melee) arrived</label>
+          <text TKey="LetterTextLaborersArrived">The royal guard from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
           <lookTargets>$laborers</lookTargets>
           <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
         </li>
@@ -724,14 +724,14 @@
               </li>
               <li Class="QuestNode_Letter">
                 <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
-                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the stellic guard melee specialists from [permitFaction_name].</text>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the royal guard melee specialists from [permitFaction_name].</text>
                 <lookTargets>$pickupShipThing</lookTargets>
               </li>
             </nodes>
           </node>
         </li>
 
-        <!-- Goodwill penalty for stellic guard killed or not on shuttle -->
+        <!-- Goodwill penalty for royal guard killed or not on shuttle -->
         <li Class="QuestNode_Set">
           <name>goodwillPenaltyPawn</name>
           <value>0</value>
@@ -742,18 +742,18 @@
           <value>-25</value>
         </li>
 
-        <!-- Stellic guard killed: Small goodwill impact. Don't end quest. -->
+        <!-- Royal guard killed: Small goodwill impact. Don't end quest. -->
         <li Class="QuestNode_Signal">
           <inSignal>laborers.Destroyed</inSignal>
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_Letter">
-                <label TKey="LetterLabelLaborerDied">Stellic guard died: {SUBJECT_definite}</label>
-                <text TKey="LetterTextLaborerDied">A stellic guard sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+                <label TKey="LetterLabelLaborerDied">Royal guard died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A royal guard sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -808,8 +808,8 @@
     </root>
   </QuestScriptDef>
 
-  <!-- Call Stellic Guard (Ranged)
-  for RoyalTitlePermitWorker_SLP_CallCataphract -->
+  <!-- Call Royal Guard (Ranged)
+  for Permit_SLP_CallStellicGuardRanged -->
   <QuestScriptDef>
     <defName>Permit_SLP_CallStellicGuardRanged</defName>
     <isRootSpecial>true</isRootSpecial>
@@ -883,7 +883,7 @@
           <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
         </li>
 
-        <!-- Stellic guard arrive by shuttle -->
+        <!-- Royal guard arrive by shuttle -->
         <li Class="QuestNode_SubScript">
           <def>Util_TransportShip_DropOff</def>
           <parms>
@@ -892,8 +892,8 @@
           </parms>
         </li>
         <li Class="QuestNode_Letter">
-          <label TKey="LetterLabelLaborersArrived">Stellic Guard (Ranged) arrived</label>
-          <text TKey="LetterTextLaborersArrived">The stellic guard from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <label TKey="LetterLabelLaborersArrived">Royal Guard (Ranged) arrived</label>
+          <text TKey="LetterTextLaborersArrived">The royal guard from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
           <lookTargets>$laborers</lookTargets>
           <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
         </li>
@@ -926,7 +926,7 @@
               </li>
               <li Class="QuestNode_Letter">
                 <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
-                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the stellic guard ranged specialists from [permitFaction_name].</text>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the royal guard ranged specialists from [permitFaction_name].</text>
                 <lookTargets>$pickupShipThing</lookTargets>
               </li>
             </nodes>
@@ -950,12 +950,12 @@
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_Letter">
-                <label TKey="LetterLabelLaborerDied">Stellic Guard died: {SUBJECT_definite}</label>
-                <text TKey="LetterTextLaborerDied">A stellic guard sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+                <label TKey="LetterLabelLaborerDied">Royal Guard died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A royal guard sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -1157,7 +1157,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -1358,7 +1358,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -1559,7 +1559,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -1760,7 +1760,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -1962,7 +1962,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>
@@ -2164,7 +2164,7 @@
               </li>
               <li Class="QuestNode_ChangeFactionGoodwill">
                 <faction>$permitFaction</faction>
-                <change>$goodwillPenalty</change>
+                <change>$goodwillPenaltyPawn</change>
                 <reason>QuestPawnLost</reason>
               </li>
             </nodes>

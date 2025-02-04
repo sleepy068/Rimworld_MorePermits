@@ -1,25 +1,12 @@
-Update v1.1.0 Build 17/04/24 Post 
+Update v1.1.1 Build 05/02/25 Post 
 *New content and adjustments, excluding bug fixes, will only be made to the Rimworld 1.5 Version of this mod (just a hassle maintaining both sorry)
 
 Additions:
-Added New Permits
-- Call Alpine Rangers
-- Call Desert Rangers
-- Call Royal Melee Team
-- Call Royal Ranged Team
 
 Changes:
-Removed Call Stellic Melee Team and Call Stellic Ranged Team patches as they've been added as in normally and renamed Royal teams (Archon Title).
 
-Increased Title Required for Call Priority Shuttle from Knight to Praetor
-Increased Title Required for Call Quick Reaction Shuttle from Knight to Praetor
-Reduced Permit Cost of Call Priority Shuttle from 2 to 1 (Increased its rank to help balance it, just hard to justify the cost even for the cooldown)
-Call Cataphract Team no longer has Call Janissary Team as prerequisite (Again just doesn't feel worthwhile)
-
-Adjusted all the patches, this mod will just move other mods permits now instead of working this mod around them (way easier).
 
 Localisation:
-Updated mod description so it matches the steam description
+
 
 Bug Fixes:
-N/A
