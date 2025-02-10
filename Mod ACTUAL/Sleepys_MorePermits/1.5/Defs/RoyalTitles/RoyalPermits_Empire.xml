@@ -422,6 +422,51 @@
 		</royalAid>
 	</RoyalTitlePermitDef>
 	
+	<RoyalTitlePermitDef Name="SLP_DropResourcesBaseStuff" Abstract="True">
+		<workerClass>RimworldSLP_MorePermits.SLP_RoyalTitlePermitWorker_DropResourcesStuff</workerClass>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<cooldownDays>30</cooldownDays>
+		<usableOnWorldMap>true</usableOnWorldMap>
+		<royalAid>
+		  <targetingRange>39.9</targetingRange>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef ParentName="SLP_DropResourcesBaseStuff">
+		<defName>SLP_ClothingDrop1</defName>
+		<label>Cold weather gear drop</label>
+		<description>Call for a drop of a set of cloth cold weather clothing.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,22)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<Apparel_Tuque>1</Apparel_Tuque>
+			<Apparel_Parka>1</Apparel_Parka>
+			<Apparel_Pants>1</Apparel_Pants>
+			<Apparel_CollarShirt>1</Apparel_CollarShirt>
+		  </itemsToDrop>
+		  <favorCost>3</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef ParentName="SLP_DropResourcesBaseStuff">
+		<defName>SLP_ClothingDrop2</defName>
+		<label>Hot weather gear drop</label>
+		<description>Call for a drop of a set of cloth hot weather clothing.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,23)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<Apparel_CowboyHat>1</Apparel_CowboyHat>
+			<Apparel_Duster>1</Apparel_Duster>
+			<Apparel_Pants>1</Apparel_Pants>
+			<Apparel_CollarShirt>1</Apparel_CollarShirt>
+		  </itemsToDrop>
+		  <favorCost>3</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
 	<!-- ======================================== Transport Support ========================================-->
 	<!-- Backup Transport Shuttle -->
 	<!-- UI 0,18 -->
