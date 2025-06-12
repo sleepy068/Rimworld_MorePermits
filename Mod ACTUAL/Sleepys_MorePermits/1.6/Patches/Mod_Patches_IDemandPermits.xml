@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<!-- Cleans up overlaps with this mod -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>I Demand Permits</li>
+		</mods>
+		
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="MechSerumResurrectorDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(2,1)</uiPosition>
+					</value>
+				</li>
+			</operations>
+		</match>
+		
+	</Operation>
+</Patch>

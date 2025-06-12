@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--===================== Imperial Medics =========================-->
+	<PawnKindDef Name="EmpireMedicBase" Abstract="True">
+    <specificApparelRequirements>
+      <li>
+        <colorGenerator Class="ColorGenerator_Options">
+          <options>
+            <li>
+              <only>(130, 130, 130)</only>
+            </li>
+			<li>
+              <only>(136, 8, 8)</only>
+            </li>
+			<li>
+              <only>(130, 130, 130)</only>
+            </li>
+          </options>
+        </colorGenerator>
+      </li>
+      <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <stuff>Cloth</stuff>
+      </li>
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <stuff>Cloth</stuff>
+      </li>
+      <li>
+        <bodyPartGroup>Legs</bodyPartGroup>
+        <stuff>Cloth</stuff>
+      </li>
+    </specificApparelRequirements>
+  </PawnKindDef>
+	
+	<!-- Civilian Paramedic -->
+	<PawnKindDef ParentName="EmpireMedicBase">
+    <defName>Empire_Common_Medic</defName>
+    <label>imperial medic</label>
+    <race>Human</race>
+    <defaultFactionType>Empire</defaultFactionType>
+    <minTitleRequired>Freeholder</minTitleRequired>
+    <maxGenerationAge>65</maxGenerationAge>
+    <combatPower>30</combatPower>
+    <backstoryFiltersOverride>
+      <li>
+        <categories>
+          <li>ImperialCommon</li>
+          <li>ImperialFighter</li>
+        </categories>
+      </li>
+    </backstoryFiltersOverride>
+    <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+    <isFighter>false</isFighter>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+	  <li>IndustrialAdvanced</li>
+	  <li>IndustrialMilitaryBasic</li>
+    </apparelTags>
+    <apparelMoney>1000~3000</apparelMoney>
+    <gearHealthRange>1~1</gearHealthRange>
+    <apparelAllowHeadgearChance>0.5</apparelAllowHeadgearChance>
+    <techHediffsMoney>50~800</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+      <li>Simple</li>
+    </techHediffsTags>
+    <techHediffsChance>0.08</techHediffsChance>
+    <apparelDisallowTags>
+      <li>Western</li>
+    </apparelDisallowTags>
+    <disallowedTraits>
+      <li>Nudist</li>
+    </disallowedTraits>
+    <initialWillRange>1~3</initialWillRange>
+    <initialResistanceRange>10~17</initialResistanceRange>
+	
+	<!-- Biotech Compat -->
+	<xenotypeSet>
+      <xenotypeChances>
+        <Neanderthal MayRequire="Ludeon.RimWorld.Biotech">0.2</Neanderthal>
+        <Hussar MayRequire="Ludeon.RimWorld.Biotech">0.1</Hussar>
+        <Genie MayRequire="Ludeon.RimWorld.Biotech">0.1</Genie>
+      </xenotypeChances>
+    </xenotypeSet>
+	
+	<!-- Start with medicine -->
+	<inventoryOptions>
+     <skipChance>0.01</skipChance>
+     <subOptionsTakeAll>
+       <li>
+         <thingDef>MedicineIndustrial</thingDef>
+         <countRange>4~9</countRange>
+       </li>
+     </subOptionsTakeAll>
+   </inventoryOptions>
+   
+   <!-- Force gear colour -->
+   <!-- <apparelColor>(130,130,130)</apparelColor> -->
+	
+	<!-- Force Skill -->
+	<skills>
+      <li>
+        <skill>Medicine</skill>
+        <range>8~12</range>
+      </li>
+    </skills>
+	
+	<!-- Set allowed work types -->
+	<requiredWorkTags>
+	  <li>Caring</li>
+    </requiredWorkTags>
+  </PawnKindDef>
+  
+    <!-- Civilian Surgeon -->
+	<PawnKindDef ParentName="EmpireMedicBase">
+    <defName>Empire_Common_Surgeon</defName>
+    <label>imperial surgeon</label>
+    <race>Human</race>
+    <defaultFactionType>Empire</defaultFactionType>
+    <minTitleRequired>Freeholder</minTitleRequired>
+    <maxGenerationAge>65</maxGenerationAge>
+    <combatPower>30</combatPower>
+    <backstoryFiltersOverride>
+      <li>
+        <categories>
+          <li>ImperialCommon</li>
+          <li>ImperialFighter</li>
+        </categories>
+      </li>
+    </backstoryFiltersOverride>
+    <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+    <isFighter>false</isFighter>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+	  <li>IndustrialAdvanced</li>
+	  <li>IndustrialMilitaryBasic</li>
+    </apparelTags>
+    <apparelMoney>2000~6000</apparelMoney>
+    <gearHealthRange>1~1</gearHealthRange>
+    <apparelAllowHeadgearChance>0.5</apparelAllowHeadgearChance>
+    <techHediffsMoney>500~3000</techHediffsMoney>
+    <techHediffsTags>
+      <li>Advanced</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <techHediffsChance>0.08</techHediffsChance>
+    <apparelDisallowTags>
+      <li>Western</li>
+    </apparelDisallowTags>
+    <disallowedTraits>
+      <li>Nudist</li>
+    </disallowedTraits>
+    <initialWillRange>2~5</initialWillRange>
+    <initialResistanceRange>15~22</initialResistanceRange>
+	
+	<!-- Biotech Compat -->
+	<xenotypeSet>
+      <xenotypeChances>
+        <Neanderthal MayRequire="Ludeon.RimWorld.Biotech">0.2</Neanderthal>
+        <Hussar MayRequire="Ludeon.RimWorld.Biotech">0.1</Hussar>
+        <Genie MayRequire="Ludeon.RimWorld.Biotech">0.1</Genie>
+      </xenotypeChances>
+    </xenotypeSet>
+	
+	<!-- Start with glitterworld meds -->
+	<inventoryOptions>
+     <skipChance>0.01</skipChance>
+     <subOptionsTakeAll>
+       <li>
+         <thingDef>MedicineUltratech</thingDef>
+         <countRange>4~7</countRange>
+       </li>
+     </subOptionsTakeAll>
+   </inventoryOptions>
+   
+   <!-- Force gear colour -->
+   <!-- <apparelColor>(130,130,130)</apparelColor> -->
+	
+	<!-- Force Skill -->
+	<skills>
+      <li>
+        <skill>Medicine</skill>
+        <range>15~18</range>
+      </li>
+    </skills>
+	
+	<!-- Set allowed work types -->
+	<requiredWorkTags>
+	  <li>Caring</li>
+    </requiredWorkTags>
+  </PawnKindDef>
+
+	<!-- Combat Paramedic -->
+	<PawnKindDef ParentName="JanissaryBase">
+    <defName>Empire_Fighter_Medic</defName>
+    <label>combat medic</label>
+    <specificApparelRequirements>
+      <li>
+		<colorGenerator Class="ColorGenerator_Options">
+          <options>
+            <li>
+              <only>(75, 75, 75)</only>
+            </li>
+			<li>
+              <only>(136, 8, 8)</only>
+            </li>
+			<li>
+              <only>(75, 75, 75)</only>
+            </li>
+          </options>
+        </colorGenerator>
+	  </li>
+	  <li>
+        <bodyPartGroup>UpperHead</bodyPartGroup>
+        <alternateTagChoices>
+          <li>
+            <tag>Gunlink</tag>
+            <chance>0.2</chance>
+          </li>
+        </alternateTagChoices>
+      </li>
+    </specificApparelRequirements>
+    <techHediffsTags>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <initialWillRange>3~5</initialWillRange>
+    <initialResistanceRange>13~21</initialResistanceRange>
+
+	<!-- Start with medicine -->
+	<inventoryOptions>
+     <skipChance>0.01</skipChance>
+     <subOptionsTakeAll>
+       <li>
+         <thingDef>MedicineIndustrial</thingDef>
+         <countRange>6~11</countRange>
+       </li>
+     </subOptionsTakeAll>
+   </inventoryOptions>
+   
+   <!-- Force gear colour -->
+   <!-- <apparelColor>(75,75,75)</apparelColor> -->
+
+	<!-- Force Skill -->
+	<skills>
+      <li>
+        <skill>Medicine</skill>
+        <range>8~12</range>
+      </li>
+	  <li>
+        <skill>Shooting</skill>
+        <range>4~10</range>
+      </li>
+    </skills>
+	
+	<!-- Set allowed work types -->
+	<requiredWorkTags>
+	  <li>Caring</li>
+    </requiredWorkTags>
+	
+  </PawnKindDef>
+  
+	<!-- Alpine Ranger -->
+    <PawnKindDef Name="SLP_AlpineRangerBase" Abstract="True" ParentName="ImperialFighterBase">
+    <combatPower>100</combatPower>
+    <weaponMoney>1550~2700</weaponMoney>
+	<itemQuality>Good</itemQuality>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>SpacerGun</li>
+      <li>SniperRifle</li>
+    </weaponTags>
+    <apparelMoney>6000~9000</apparelMoney>
+    <apparelRequired>
+	  <li>Apparel_Tuque</li>
+      <li>Apparel_Parka</li>
+	  <li>Apparel_CollarShirt</li>
+      <li>Apparel_Pants</li>
+      <li>Apparel_FlakVest</li>
+    </apparelRequired>
+	<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+	
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+  </PawnKindDef>
+
+    <PawnKindDef ParentName="SLP_AlpineRangerBase">
+    <defName>SLP_Empire_Fighter_AlpineRanger</defName>
+    <label>alpine ranger</label>
+    <!--<apparelColor>(75,75,75)</apparelColor>-->
+    <specificApparelRequirements>
+      <li>
+		<colorGenerator Class="ColorGenerator_Options">
+          <options>
+            <li>
+              <only>(50, 70, 52)</only>
+            </li>
+			<li>
+              <only>(43, 60, 77)</only>
+            </li>
+			<li>
+              <only>(50, 70, 52)</only>
+            </li>
+          </options>
+        </colorGenerator>
+	  </li>
+	  <li>
+        <apparelDef>Apparel_Parka</apparelDef>
+        <stuff>WoolMegasloth</stuff>
+      </li>
+	  <li>
+        <apparelDef>Apparel_Tuque</apparelDef>
+        <stuff>WoolMegasloth</stuff>
+      </li>
+    </specificApparelRequirements>
+    <techHediffsTags>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~10</range>
+      </li>
+    </skills>
+    <initialWillRange>3~5</initialWillRange>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <Hussar MayRequire="Ludeon.RimWorld.Biotech">0.4</Hussar>
+      </xenotypeChances>
+    </xenotypeSet>
+  </PawnKindDef>
+  
+    <!-- Desert Ranger -->
+    <PawnKindDef Name="SLP_DesertRangerBase" Abstract="True" ParentName="ImperialFighterBase">
+    <combatPower>100</combatPower>
+    <weaponMoney>1550~2700</weaponMoney>
+	<itemQuality>Good</itemQuality>
+    <weaponTags>
+      <li>IndustrialGunAdvanced</li>
+      <li>SpacerGun</li>
+      <li>SniperRifle</li>
+    </weaponTags>
+    <apparelMoney>6000~9000</apparelMoney>
+    <apparelRequired>
+	  <li>Apparel_CowboyHat</li>
+      <li>Apparel_Duster</li>
+	  <li>Apparel_CollarShirt</li>
+      <li>Apparel_Pants</li>
+      <li>Apparel_FlakVest</li>
+    </apparelRequired>
+	<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+    <disallowedTraits>
+      <li>Brawler</li>
+    </disallowedTraits>
+  </PawnKindDef>
+
+    <PawnKindDef ParentName="SLP_DesertRangerBase">
+    <defName>SLP_Empire_Fighter_DesertRanger</defName>
+    <label>desert ranger</label>
+    <!--<apparelColor>(75,75,75)</apparelColor>-->
+    <specificApparelRequirements>
+      <li>
+		<colorGenerator Class="ColorGenerator_Options">
+          <options>
+            <li>
+              <only>(214, 188, 139)</only>
+            </li>
+			<li>
+              <only>(161, 131, 107)</only>
+            </li>
+			<li>
+              <only>(214, 188, 139)</only>
+            </li>
+          </options>
+        </colorGenerator>
+	  </li>
+	  <li>
+        <apparelDef>Apparel_Duster</apparelDef>
+        <stuff>Synthread</stuff>
+      </li>
+	  <li>
+        <apparelDef>Apparel_CowboyHat</apparelDef>
+        <stuff>Synthread</stuff>
+      </li>
+    </specificApparelRequirements>
+    <techHediffsTags>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <skills>
+      <li>
+        <skill>Shooting</skill>
+        <range>6~10</range>
+      </li>
+    </skills>
+    <initialWillRange>3~5</initialWillRange>
+    <initialResistanceRange>13~21</initialResistanceRange>
+    <useFactionXenotypes>false</useFactionXenotypes>
+    <xenotypeSet>
+      <xenotypeChances>
+        <Hussar MayRequire="Ludeon.RimWorld.Biotech">0.4</Hussar>
+      </xenotypeChances>
+    </xenotypeSet>
+  </PawnKindDef>
+  
+   <!--===================== Imperial Skilled Civilians =========================-->
+  
+  
+</Defs>

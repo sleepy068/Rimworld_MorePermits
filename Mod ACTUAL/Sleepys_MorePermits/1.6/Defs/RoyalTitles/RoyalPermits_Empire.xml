@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- New WorkerClasses Coded In (For spawning in soldiers that temporarily join the colony):
+	RoyalTitlePermitWorker_SLP_CallTroopers
+	RoyalTitlePermitWorker_SLP_CallJanissary
+	RoyalTitlePermitWorker_SLP_CallCataphract
+	RoyalTitlePermitWorker_SLP_CallParamedics
+	RoyalTitlePermitWorker_SLP_CallCombatParamedics
+	-->
+	
+	<!-- Titles (Total of 5 Permit Points max):
+	Acolyte
+	Knight
+	Praetor
+	Baron
+	Count
+
+	Duke
+	Consul
+	Stellarch
+	Emperor
+	-->
+	
+	<!-- Balancing:
+	Empire_Fighter_Trooper (Aid: 1 Honour | Stay: 2 Honour)
+	Empire_Fighter_Janissary (Aid: 1.5 Honour | Stay: 3 Honour)
+	Empire_Fighter_Cataphract (Aid: 2 Honour | Stay: 4 Honour)
+	
+	Empire_Fighter_Champion (Melee Only) (Aid: N/A Honour | Stay: 3 Honour)
+	Empire_Fighter_StellicGuardRanged (Aid: 2.5 Honour | Stay: 5 Honour)
+	Empire_Fighter_StellicGuardMelee (Aid: 2.5 Honour | Stay: 5 Honour)
+	
+	Paramedic (Aid: N/A Honour | Stay: 2.5 Honour)
+	Combat Paramedic (Aid: N/A Honour | Stay: 3.5 Honour)
+	-->
+	
+	<!-- Soldier Types:
+	Empire_Fighter_Trooper
+	Empire_Fighter_Janissary
+	Empire_Fighter_Cataphract
+	
+	Empire_Fighter_Champion (Melee Only)
+	Empire_Fighter_StellicGuardRanged
+	Empire_Fighter_StellicGuardMelee
+	-->
+	
+	<!-- ======================================== Trooper Support ========================================-->
+	<!-- Call Soldier Support -->
+	<!-- ======================================== -->
+	<!-- 2 Light Troopers (4 Days) - CallMilitaryAidSLP1 -->
+	<!-- UI 0,9 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP1</defName>
+		<label>call trooper team</label>
+		<description>Call a group of 2 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<minTitle>Knight</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,9)</uiPosition>
+		<royalAid>
+		<favorCost>4</favorCost>
+		<pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>45</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Light Troopers (8 Days) - CallMilitaryAidSLP1a -->
+	<!-- UI 1,9 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP1a</defName>
+		<label>call enduring trooper team</label>
+		<description>Call a group of 2 light troopers to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP1</prerequisite>
+		<uiPosition>(1,9)</uiPosition>
+		<royalAid>
+		<favorCost>8</favorCost>
+		<pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>8</aidDurationDays>
+		</royalAid>
+		<cooldownDays>45</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 4 Light Troopers (4 Days) - CallMilitaryAidSLP1b -->
+	<!-- UI 1,10 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP1b</defName>
+		<label>call large trooper team</label>
+		<description>Call a group of 4 light troopers to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallTroopers</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP1</prerequisite>
+		<uiPosition>(1,10)</uiPosition>
+		<royalAid>
+		<favorCost>8</favorCost>
+		<pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+		<pawnCount>4</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>45</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- Call Janissary Support -->
+	<!-- ======================================== -->
+	<!-- 2 Janissaries (4 Days) - CallMilitaryAidSLP2 -->
+	<!-- UI 0,11 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2</defName>
+		<label>call janissary team</label>
+		<description>Call a group of 2 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,11)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Janissaries (8 Days) - CallMilitaryAidSLP2a -->
+	<!-- UI 1,11 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2a</defName>
+		<label>call enduring janissary team</label>
+		<description>Call a group of 2 professional janissaries to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP2</prerequisite>
+		<uiPosition>(1,11)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>8</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 4 Janissaries (4 Days) - CallMilitaryAidSLP2b -->
+	<!-- UI 1,12 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2b</defName>
+		<label>call large janissary team</label>
+		<description>Call a group of 4 professional janissaries to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallJanissary</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP2</prerequisite>
+		<uiPosition>(1,12)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
+		<pawnCount>4</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Cataphracts (4 Days) - CallMilitaryAidSLP2c -->
+	<!-- UI 0,13 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP2c</defName>
+		<label>call cataphract team</label>
+		<description>Call a group of 2 heavy cataphracts to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallCataphract</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<!-- <prerequisite>CallMilitaryAidSLP2</prerequisite> -->
+		<uiPosition>(0,13)</uiPosition>
+		<royalAid>
+		<favorCost>8</favorCost>
+		<pawnKindDef>Empire_Fighter_Cataphract</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- Call Champion Support -->
+	<!-- ======================================== -->
+	<!-- 2 Champions (4 Days) - CallMilitaryAidSLP3 -->
+	<!-- UI 0,14 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP3</defName>
+		<label>call champion team</label>
+		<description>Call a group of 2 champions to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallChampions</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,14)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>Empire_Fighter_Champion</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Champions (8 Days) - CallMilitaryAidSLP3a -->
+	<!-- UI 1,14 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP3a</defName>
+		<label>call enduring champion team</label>
+		<description>Call a group of 2 champions to assist you for 8 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallChampions</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP3</prerequisite>
+		<uiPosition>(1,14)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Champion</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>8</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 4 Champions (4 Days) - CallMilitaryAidSLP3b -->
+	<!-- UI 1,15 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP3b</defName>
+		<label>call large champion team</label>
+		<description>Call a group of 4 champions to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallChampions</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP3</prerequisite>
+		<uiPosition>(1,15)</uiPosition>
+		<royalAid>
+		<favorCost>12</favorCost>
+		<pawnKindDef>Empire_Fighter_Champion</pawnKindDef>
+		<pawnCount>4</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- Call Paramedic Support -->
+	<!-- ======================================== -->
+	<!-- 2 Paramedics (4 Days) - CallMilitaryAidSLP4a -->
+	<!-- UI 0,16 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP4</defName>
+		<label>call paramedics</label>
+		<description>Call a group of 2 paramedics to assist you for 4 days. These civilians can help you with any outstanding medical issues your colony may be facing but they won't do many other tasks. You can control them as though they were your own colonists. These specialists are civilians and you are expected to keep them safe and out of direct combat situations. If they die in battle you'll receive a significant goodwill penalty. \n\nParamedics will bring their own medicine to support your colony but may need additional supplies depending on the work that is required.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallParamedics</workerClass>
+		<minTitle>Knight</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,16)</uiPosition>
+		<royalAid>
+		<favorCost>5</favorCost>
+		<pawnKindDef>Empire_Common_Medic</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Combat Paramedics (4 Days) - CallMilitaryAidSLP4a -->
+	<!-- UI 1,16 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP4a</defName>
+		<label>call combat paramedics</label>
+		<description>Call a group of 2 combat paramedics to assist you for 4 days. These soldiers can help fight for or defend your colony but they specialise in providing medical care to your colony and colonists even under combat conditions. Been specialised they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty. \n\nCombat Paramedics will bring their own medicine to support your colony but may need additional supplies depending on the work that is required.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallCombatParamedics</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP4</prerequisite>
+		<uiPosition>(1,16)</uiPosition>
+		<royalAid>
+		<favorCost>7</favorCost>
+		<pawnKindDef>Empire_Fighter_Medic</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Surgeons (4 Days) - CallMilitaryAidSLP4b -->
+	<!-- UI 1,17 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP4b</defName>
+		<label>call surgery team</label>
+		<description>Call a group of 2 surgeons to assist you for 4 days. These civilians are expertly trained in their medical fields and can help you with any outstanding medical issues or surgeries your colony may be facing but they won't do many other tasks. You can control them as though they were your own colonists. These specialists are civilians and you are expected to keep them safe and out of direct combat situations. If they die in battle you'll receive a significant goodwill penalty. \n\nSurgeons will bring their own medicine to support your colony but may need additional supplies depending on the work that is required.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallSurgeons</workerClass>
+		<minTitle>Praetor</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<prerequisite>CallMilitaryAidSLP4</prerequisite>
+		<uiPosition>(1,17)</uiPosition>
+		<royalAid>
+		<favorCost>7</favorCost>
+		<pawnKindDef>Empire_Common_Surgeon</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- Call Misc Support -->
+	<!-- ======================================== -->
+    <!-- 2 Alpine Rangers (4 Days) - CallMilitaryAidSLP_ALP1 -->
+	<!-- UI 0,20 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_ALP1</defName>
+		<label>call alpine rangers</label>
+		<description>Call a group of 2 professional alpine rangers to assist you for 4 days. These rangers are specifically trained and equipped for extreme cold environments and can be called in regardless of how low the local temperature is. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallAlpineRangers</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,20)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>SLP_Empire_Fighter_AlpineRanger</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Desert Rangers (4 Days) - CallMilitaryAidSLP_DES1 -->
+	<!-- UI 1,20 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_DES1</defName>
+		<label>call desert rangers</label>
+		<description>Call a group of 2 professional desert rangers to assist you for 4 days. These rangers are specifically trained and equipped for extreme heat environments and can be called in regardless of how high the local temperature is. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You are expected to keep them safe and if they die in battle you'll receive a small goodwill penalty.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallDesertRangers</workerClass>
+		<minTitle>Baron</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,20)</uiPosition>
+		<royalAid>
+		<favorCost>6</favorCost>
+		<pawnKindDef>SLP_Empire_Fighter_DesertRanger</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>60</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Royal Guards (Melee)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
+	<!-- UI 0,21 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_ADD_UE1a</defName>
+		<label>call royal melee team</label>
+		<description>Call a group of 2 royal guards specialised in melee to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and may have psycaster abilities of their own but they can arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardMelee</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,21)</uiPosition>
+		<royalAid>
+		<favorCost>10</favorCost>
+		<pawnKindDef>Empire_Fighter_StellicGuardMelee</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>80</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- 2 Royal Guards (Ranged)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
+	<!-- UI 1,21 -->
+	<RoyalTitlePermitDef>
+		<defName>CallMilitaryAidSLP_ADD_UE1b</defName>
+		<label>call royal ranged team</label>
+		<description>Call a group of 2 royal guards specialised in ranged combat to assist you for 4 days. These soldiers can help fight for or defend your colony but they won't do many other tasks. You can control them as though they were your own colonists. You'll need to house and feed them but royal guards are expected to give their lives to protect title holders of the Empire, so you will receive no penalty if they are killed in battle.\n\nRoyal Guards are the elite troopers of the empire. They are exceptionally skilled and may have psycaster abilities of their own but they can arrive with titles up to that of a Knight or Dame. These titles may require certain foods or rooms that meet their expectations.</description>
+		<workerClass>RimworldSLP_MorePermits.RoyalTitlePermitWorker_SLP_CallStellicGuardRanged</workerClass>
+		<minTitle>Count</minTitle>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,21)</uiPosition>
+		<royalAid>
+		<favorCost>10</favorCost>
+		<pawnKindDef>Empire_Fighter_StellicGuardRanged</pawnKindDef>
+		<pawnCount>2</pawnCount>
+		<aidDurationDays>4</aidDurationDays>
+		</royalAid>
+		<cooldownDays>80</cooldownDays>
+	</RoyalTitlePermitDef>
+	
+	<!-- ======================================== Economy Support ========================================-->
+	<!-- Drug Drop -->
+	<!-- UI 0,19 -->
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>SLP_DrugDrop</defName>
+		<label>drug drop</label>
+		<description>Call for a drop of 8 wake up and 4 go juice.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,19)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<WakeUp>8</WakeUp>
+			<GoJuice>4</GoJuice>
+		  </itemsToDrop>
+		  <favorCost>4</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef Name="SLP_DropResourcesBaseStuff" Abstract="True">
+		<workerClass>RimworldSLP_MorePermits.SLP_RoyalTitlePermitWorker_DropResourcesStuff</workerClass>
+		<faction>Empire</faction>
+		<permitPointCost>1</permitPointCost>
+		<cooldownDays>30</cooldownDays>
+		<usableOnWorldMap>true</usableOnWorldMap>
+		<royalAid>
+		  <targetingRange>39.9</targetingRange>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef ParentName="SLP_DropResourcesBaseStuff">
+		<defName>SLP_ClothingDrop1</defName>
+		<label>Cold weather gear drop</label>
+		<description>Call for a drop of a set of cloth cold weather clothing.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,22)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<Apparel_Tuque>1</Apparel_Tuque>
+			<Apparel_Parka>1</Apparel_Parka>
+			<Apparel_Pants>1</Apparel_Pants>
+			<Apparel_CollarShirt>1</Apparel_CollarShirt>
+		  </itemsToDrop>
+		  <favorCost>3</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<RoyalTitlePermitDef ParentName="SLP_DropResourcesBaseStuff">
+		<defName>SLP_ClothingDrop2</defName>
+		<label>Hot weather gear drop</label>
+		<description>Call for a drop of a set of cloth hot weather clothing.</description>
+		<minTitle>Acolyte</minTitle>
+		<uiPosition>(0,23)</uiPosition>
+		<royalAid>
+		  <itemsToDrop>
+			<Apparel_CowboyHat>1</Apparel_CowboyHat>
+			<Apparel_Duster>1</Apparel_Duster>
+			<Apparel_Pants>1</Apparel_Pants>
+			<Apparel_CollarShirt>1</Apparel_CollarShirt>
+		  </itemsToDrop>
+		  <favorCost>3</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+	
+	<!-- ======================================== Transport Support ========================================-->
+	<!-- Backup Transport Shuttle -->
+	<!-- UI 0,18 -->
+	<RoyalTitlePermitDef>
+    <defName>SLP_CallTransportShuttle1</defName>
+    <label>call priority shuttle</label>
+    <description>Call a backup priority shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This transport is usually reserved for specific missions and targets and as such, it will be available again far quicker then a standard permit shuttle.</description>
+    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+    <minTitle>Praetor</minTitle>
+    <faction>Empire</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>20</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+    <uiPosition>(0,18)</uiPosition>
+    <royalAid>
+      <favorCost>4</favorCost>
+      <targetingRange>44.9</targetingRange>
+      <targetingRequireLOS>false</targetingRequireLOS>
+    </royalAid>
+  </RoyalTitlePermitDef>
+  
+    <!-- Quick Transport Shuttle -->
+	<!-- UI 1,18 -->
+	<RoyalTitlePermitDef>
+    <defName>SLP_CallTransportShuttle2</defName>
+    <label>call quick reaction shuttle</label>
+    <description>Call a rapid quick reaction shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. This shuttle is almost entirely dedicated to your use, requiring some time to return to base to refuel, repair when needed and comply with emergency orders, as such it'll be ready to use again extremely quickly.</description>
+    <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+    <minTitle>Praetor</minTitle>
+    <faction>Empire</faction>
+    <permitPointCost>1</permitPointCost>
+    <cooldownDays>7</cooldownDays>
+    <usableOnWorldMap>true</usableOnWorldMap>
+	<prerequisite>SLP_CallTransportShuttle1</prerequisite>
+    <uiPosition>(1,18)</uiPosition>
+    <royalAid>
+      <favorCost>4</favorCost>
+      <targetingRange>44.9</targetingRange>
+      <targetingRequireLOS>false</targetingRequireLOS>
+    </royalAid>
+  </RoyalTitlePermitDef>
+  
+</Defs>

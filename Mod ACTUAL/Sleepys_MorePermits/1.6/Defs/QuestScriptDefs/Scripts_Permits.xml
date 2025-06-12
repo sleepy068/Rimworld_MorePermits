@@ -1,0 +1,2222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- Call Troopers
+  for RoyalTitlePermitWorker_SLP_CallTroopers -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallTroopers</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (troopers) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Troopers arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Troopers arrived</label>
+          <text TKey="LetterTextLaborersArrived">The troopers from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the troopers from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for troopers killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-3</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Trooper killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Trooper died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A trooper sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing troopers on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Janissaries
+  for RoyalTitlePermitWorker_SLP_CallJanissary -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallJanissary</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (janissaries) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Janissaries arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Janissaries arrived</label>
+          <text TKey="LetterTextLaborersArrived">The janissaries from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the janissaries from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for janissaries killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-4</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Janissary killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Janissary died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A janissary sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Janissaries on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Cataphracts
+  for RoyalTitlePermitWorker_SLP_CallCataphract -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallCataphract</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (Cataphracts) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Cataphracts arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Cataphracts arrived</label>
+          <text TKey="LetterTextLaborersArrived">The cataphracts from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the cataphracts from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for cataphracts killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-5</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Cataphract killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Cataphract died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A cataphract sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Cataphract on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Royal Guard (Melee)
+  for Permit_SLP_CallStellicGuardMelee -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallStellicGuardMelee</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (Stellic Guard) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Stellic guard arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Royal Guard (Melee) arrived</label>
+          <text TKey="LetterTextLaborersArrived">The royal guard from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the royal guard melee specialists from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for royal guard killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>0</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Royal guard killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Royal guard died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A royal guard sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Stellic guard on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Royal Guard (Ranged)
+  for Permit_SLP_CallStellicGuardRanged -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallStellicGuardRanged</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (Cataphracts) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Royal guard arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Royal Guard (Ranged) arrived</label>
+          <text TKey="LetterTextLaborersArrived">The royal guard from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the royal guard ranged specialists from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for cataphracts killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>0</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Cataphract killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Royal Guard died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A royal guard sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Cataphract on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Champions
+  for RoyalTitlePermitWorker_SLP_CallChampion -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallChampions</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (janissaries) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Champions arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Champions arrived</label>
+          <text TKey="LetterTextLaborersArrived">The champions from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the champions from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for champions killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-4</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Champion killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Champion died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A champion sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Champions on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Paramedics
+  for RoyalTitlePermitWorker_SLP_CallParamedics -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallParamedics</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except medical, cleaning and firefighting (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>Violent</li>
+            <li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Units arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Paramedics arrived</label>
+          <text TKey="LetterTextLaborersArrived">The paramedics from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the paramedics from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for unit killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-12</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Unit killed: normal goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Paramedic died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A paramedic sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing units on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Combat Paramedics
+  for RoyalTitlePermitWorker_SLP_CallCombatParamedics -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallCombatParamedics</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat, medical, cleaning and firefighting (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+            <li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Units arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Combat Paramedics arrived</label>
+          <text TKey="LetterTextLaborersArrived">The combat paramedics from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the combat paramedics from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for unit killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-6</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Unit killed: normal goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Combat Paramedic died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A combat paramedic sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing units on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+
+  <!-- Call Surgeons
+  for RoyalTitlePermitWorker_SLP_CallSurgeons -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallSurgeons</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except medical, cleaning and firefighting (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>Violent</li>
+            <li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Units arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Surgeons arrived</label>
+          <text TKey="LetterTextLaborersArrived">The surgeons from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the surgeons from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for unit killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-16</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Unit killed: normal goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Surgeon died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A surgeon sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing units on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+  
+  <!-- Call Desert Rangers
+  for RoyalTitlePermitWorker_SLP_CallDesertRangers -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallDesertRangers</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (Desert Rangers) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Desert Rangers arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Desert Rangers arrived</label>
+          <text TKey="LetterTextLaborersArrived">The desert rangers from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the desert rangers from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for Desert Rangers killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-4</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Desert Ranger killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Desert Ranger died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A desert ranger sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Desert Ranger on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+  
+  <!-- Call Alpine Rangers
+  for RoyalTitlePermitWorker_SLP_CallAlpineRangers -->
+  <QuestScriptDef>
+    <defName>Permit_SLP_CallAlpineRangers</defName>
+    <isRootSpecial>true</isRootSpecial>
+    <autoAccept>true</autoAccept>
+    <defaultHidden>true</defaultHidden>
+    <questDescriptionAndNameRules>
+      <rulesStrings>
+        <li>questName->laborers</li>
+        <li>questDescription-></li>
+      </rulesStrings>
+    </questDescriptionAndNameRules>
+    <root Class="QuestNode_Sequence">
+      <nodes>
+
+        <!-- Generate laborers (Alpine Rangers) -->
+        <li Class="QuestNode_LoopCount">
+          <loopCount>$laborersCount</loopCount>
+          <node Class="QuestNode_GeneratePawn">
+            <kindDef>$laborersPawnKind</kindDef>
+            <faction>$permitFaction</faction>
+            <addToList>laborers</addToList>
+            <allowAddictions>false</allowAddictions>
+            <biocodeWeaponChance>1</biocodeWeaponChance>
+            <biocodeApparelChance>1</biocodeApparelChance>
+			<mustBeCapableOfViolence>true</mustBeCapableOfViolence>
+            <prohibitedTraits><li>Greedy</li></prohibitedTraits>
+			<allowPregnant>false</allowPregnant>
+          </node>
+        </li>
+        <!-- Lock their apparel -->
+        <li Class="QuestNode_SetAllApparelLocked">
+          <pawns>$laborers</pawns>
+        </li>
+        <!-- Disable all work except combat and firefighting, medical (Cant let them be too useful outside of combat for labourer balancing) -->
+        <li Class="QuestNode_WorkDisabled">
+          <pawns>$laborers</pawns>
+          <disabledWorkTags>
+			<li>ManualSkilled</li>
+			<li>Hauling</li>
+			<li>Social</li>
+            <li>Intellectual</li>
+            <li>Animals</li>
+			<li>Artistic</li>
+			<li>Hunting</li>
+			<li>Cleaning</li>
+          </disabledWorkTags>
+        </li>
+        <!-- Give on duty thought -->
+        <li Class="QuestNode_AddMemoryThought">
+          <pawns>$laborers</pawns>
+          <def>OnDuty</def>
+        </li>
+        
+        <li Class="QuestNode_ExtraFaction">
+          <faction>$permitFaction</faction>
+          <pawns>$laborers</pawns>
+          <factionType>HomeFaction</factionType>
+          <inSignalsRemovePawn>
+            <li>lodgers.RanWild</li>
+            <li>lodgers.BecameMutant</li>
+          </inSignalsRemovePawn>
+        </li>
+        <li Class="QuestNode_JoinPlayer">
+          <pawns>$laborers</pawns>
+          <joinPlayer>True</joinPlayer>
+          <makePrisoners>False</makePrisoners>
+        </li>
+        <li Class="QuestNode_LeaveOnCleanup">
+          <pawns>$laborers</pawns>
+          <sendStandardLetter>false</sendStandardLetter>
+          <inSignalRemovePawn>laborers.RanWild</inSignalRemovePawn>
+        </li>
+
+        <!-- Alpine Rangers arrive by shuttle -->
+        <li Class="QuestNode_SubScript">
+          <def>Util_TransportShip_DropOff</def>
+          <parms>
+            <contents>$laborers</contents>
+            <owningFaction>$permitFaction</owningFaction>
+          </parms>
+        </li>
+        <li Class="QuestNode_Letter">
+          <label TKey="LetterLabelLaborersArrived">Alpine Rangers arrived</label>
+          <text TKey="LetterTextLaborersArrived">The alpine rangers from [permitFaction_name] have arrived. A shuttle will come to collect them in [laborersDurationDays] days.</text>
+          <lookTargets>$laborers</lookTargets>
+          <filterDeadPawnsFromLookTargets>True</filterDeadPawnsFromLookTargets>
+        </li>
+        <!-- Arrival shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>dropoffShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_ChangeFactionGoodwill">
+            <faction>$permitFaction</faction>
+            <change>$goodwillChangeOnShuttleDestroyed</change>
+            <reason>ShuttleDestroyed</reason>
+          </node>
+        </li>
+
+        <!-- Departure shuttle -->
+        <li Class="QuestNode_ShuttleDelay">
+          <delayTicks>$($laborersDurationDays * 60000)</delayTicks>
+          <lodgers>$laborers</lodgers>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_SubScript">
+                <def>Util_TransportShip_Pickup</def>
+                <parms>
+                  <leaveDelayTicks>$(1*60000)</leaveDelayTicks>
+                  <requiredPawns>$laborers</requiredPawns>
+                </parms>
+              </li>
+              <li Class="QuestNode_InspectString">
+                <targets>$laborers</targets>
+                <inspectString TKey="InspectStringDepartShuttle">Should depart on shuttle</inspectString>
+              </li>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelShuttleArrived">Shuttle arrived</label>
+                <text TKey="LetterTextShuttleArrivedForLaborers">A shuttle has arrived to collect the alpine rangers from [permitFaction_name].</text>
+                <lookTargets>$pickupShipThing</lookTargets>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Goodwill penalty for Alpine Rangers killed or not on shuttle -->
+        <li Class="QuestNode_Set">
+          <name>goodwillPenaltyPawn</name>
+          <value>-4</value>
+        </li>
+        <!-- Goodwill penalty for shuttle destruction -->
+        <li Class="QuestNode_Set">
+          <name>goodwillChangeOnShuttleDestroyed</name>
+          <value>-25</value>
+        </li>
+
+        <!-- Alpine Ranger killed: Small goodwill impact. Don't end quest. -->
+        <li Class="QuestNode_Signal">
+          <inSignal>laborers.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label TKey="LetterLabelLaborerDied">Alpine Ranger died: {SUBJECT_definite}</label>
+                <text TKey="LetterTextLaborerDied">A alpine ranger sent to you by [permitFaction_name] has died. Your goodwill with [permitFaction_name] has fallen by [goodwillPenaltyPawn].</text>
+              </li>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillPenaltyPawn</change>
+                <reason>QuestPawnLost</reason>
+              </li>
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Missing Alpine Ranger on departure shuttle. Goodwill impact -->
+        <li Class="QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <pawns>$laborers</pawns>
+          <faction>$permitFaction</faction>
+          <goodwillChange>$goodwillPenaltyPawn</goodwillChange> <!-- Per missing laborer -->
+          <reason>LaborersMissedShuttle</reason>
+        </li>
+
+        <!-- - - - - - - -  -->
+        <!--      End       -->
+        <!-- - - - - - - -  -->
+
+        <!-- Departure shuttle is destroyed -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.Destroyed</inSignal>
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_ChangeFactionGoodwill">
+                <faction>$permitFaction</faction>
+                <change>$goodwillChangeOnShuttleDestroyed</change>
+                <reason>ShuttleDestroyed</reason>
+              </li>
+              <li Class="QuestNode_End" />
+            </nodes>
+          </node>
+        </li>
+
+        <!-- Shuttle sent -->
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentUnsatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+        <li Class="QuestNode_Signal">
+          <inSignal>pickupShipThing.SentSatisfied</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+        <!-- End if the permit's faction becomes hostile -->
+        <li Class="QuestNode_Signal">
+          <inSignal>permitFaction.BecameHostileToPlayer</inSignal>
+          <node Class="QuestNode_End" />
+        </li>
+
+      </nodes>
+    </root>
+  </QuestScriptDef>
+  
+</Defs>
