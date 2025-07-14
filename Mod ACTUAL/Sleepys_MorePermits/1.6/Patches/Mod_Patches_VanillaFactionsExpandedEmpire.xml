@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<!-- Cleans up overlaps with this mod -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Empire</li>
+		</mods>
+		
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="GlitterMedDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,8)</uiPosition>
+					</value>
+				</li>
+							
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallOrbitalSlicingBeam"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(2,5)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_PlasteelDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,0)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_UraniumDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,2)</uiPosition>
+					</value>
+				</li>
+					
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_MedDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(2,8)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_WoodDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(2,9)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_SynthreadDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(2,10)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_ClothDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,0)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_NobleFoodDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,1)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallLaborerUnion"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,2)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallAbsolver"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,3)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_HEShellsDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,4)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_ComponentDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,5)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallEvacShuttle"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,6)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallTrooperPlatoon"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,7)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_HerbalMedDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(0,8)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_ChemfuelDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,9)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_DevilstrandDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,10)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallCataphractPlatoon"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(5,7)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallTechfriar"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,1)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallStellicGuards"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(6,7)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_StrikerTurretDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,3)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_BurnoutShieldDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,4)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_ComponentSpacerDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,5)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_StoneDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,6)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallJanissaryPlatoon"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,7)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_CallImperialRegiment"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(7,7)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_GoldDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,9)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEI_HyperweaveDrop"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(4,10)</uiPosition>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

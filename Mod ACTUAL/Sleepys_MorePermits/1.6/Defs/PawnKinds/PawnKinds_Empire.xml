@@ -39,7 +39,7 @@
     <defName>Empire_Common_Medic</defName>
     <label>imperial medic</label>
     <race>Human</race>
-    <defaultFactionType>Empire</defaultFactionType>
+    <defaultFactionDef>Empire</defaultFactionDef>
     <minTitleRequired>Freeholder</minTitleRequired>
     <maxGenerationAge>65</maxGenerationAge>
     <combatPower>30</combatPower>
@@ -56,10 +56,8 @@
     <isFighter>false</isFighter>
     <apparelTags>
       <li>IndustrialBasic</li>
-	  <li>IndustrialAdvanced</li>
-	  <li>IndustrialMilitaryBasic</li>
     </apparelTags>
-    <apparelMoney>1000~3000</apparelMoney>
+    <apparelMoney>100~3000</apparelMoney>
     <gearHealthRange>1~1</gearHealthRange>
     <apparelAllowHeadgearChance>0.5</apparelAllowHeadgearChance>
     <techHediffsMoney>50~800</techHediffsMoney>
@@ -119,7 +117,7 @@
     <defName>Empire_Common_Surgeon</defName>
     <label>imperial surgeon</label>
     <race>Human</race>
-    <defaultFactionType>Empire</defaultFactionType>
+    <defaultFactionDef>Empire</defaultFactionDef>
     <minTitleRequired>Freeholder</minTitleRequired>
     <maxGenerationAge>65</maxGenerationAge>
     <combatPower>30</combatPower>
