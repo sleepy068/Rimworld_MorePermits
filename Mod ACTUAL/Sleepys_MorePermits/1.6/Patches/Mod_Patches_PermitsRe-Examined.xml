@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<!-- Cleans up overlaps with this mod -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Permits: Re-Examined</li>
+		</mods>
+		
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEIRE_CallMedics"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(2,11)</uiPosition>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RoyalTitlePermitDef[defName="VFEIRE_CallTraumaSurgeon"]/uiPosition</xpath>
+					<value>
+						<uiPosition>(3,11)</uiPosition>
+					</value>
+				</li>
+			</operations>
+		</match>
+		
+	</Operation>
+</Patch>
