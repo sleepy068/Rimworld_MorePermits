@@ -8,11 +8,3 @@ C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v120\Build
 C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v120\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.AssemblyReference.cache
 C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v120\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.CoreCompileInputs.cache
 C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v120\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.dll
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v130\Build\RimworldSLP_MorePermits.dll
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v130\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.AssemblyReference.cache
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v130\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.CoreCompileInputs.cache
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v130\RimworldSLP_MorePermits\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.dll
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v140\1.6\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.AssemblyReference.cache
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v140\1.6\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.csproj.CoreCompileInputs.cache
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v140\1.6\RimworldSLP_MorePermits\obj\Debug\RimworldSLP_MorePermits.dll
-C:\Users\ethan\Documents\GitHub\Rimworld_MorePermits\Resources\Source\v140\Build\RimworldSLP_MorePermits.dll

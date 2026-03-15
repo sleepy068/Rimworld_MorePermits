@@ -65,6 +65,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>45</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Light Troopers (8 Days) - CallMilitaryAidSLP1a -->
@@ -86,6 +89,9 @@
 		<aidDurationDays>8</aidDurationDays>
 		</royalAid>
 		<cooldownDays>45</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 4 Light Troopers (4 Days) - CallMilitaryAidSLP1b -->
@@ -107,6 +113,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>45</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- Call Janissary Support -->
@@ -129,6 +138,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Janissaries (8 Days) - CallMilitaryAidSLP2a -->
@@ -150,6 +162,9 @@
 		<aidDurationDays>8</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 4 Janissaries (4 Days) - CallMilitaryAidSLP2b -->
@@ -171,6 +186,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Cataphracts (4 Days) - CallMilitaryAidSLP2c -->
@@ -192,6 +210,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- Call Champion Support -->
@@ -214,6 +235,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Champions (8 Days) - CallMilitaryAidSLP3a -->
@@ -235,6 +259,9 @@
 		<aidDurationDays>8</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 4 Champions (4 Days) - CallMilitaryAidSLP3b -->
@@ -256,6 +283,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- Call Paramedic Support -->
@@ -278,6 +308,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Combat Paramedics (4 Days) - CallMilitaryAidSLP4a -->
@@ -299,6 +332,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Surgeons (4 Days) - CallMilitaryAidSLP4b -->
@@ -320,6 +356,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- Call Misc Support -->
@@ -342,6 +381,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Desert Rangers (4 Days) - CallMilitaryAidSLP_DES1 -->
@@ -362,6 +404,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>60</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Royal Guards (Melee)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
@@ -382,6 +427,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>80</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- 2 Royal Guards (Ranged)(4 Days) - CallMilitaryAidSLP_ADD_UE1a -->
@@ -402,6 +450,9 @@
 		<aidDurationDays>4</aidDurationDays>
 		</royalAid>
 		<cooldownDays>80</cooldownDays>
+		<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+		</layerBlacklist>
 	</RoyalTitlePermitDef>
 	
 	<!-- ======================================== Economy Support ========================================-->
@@ -433,6 +484,8 @@
 		</royalAid>
 	</RoyalTitlePermitDef>
 	
+	<!-- Cold Weather Gear Drop -->
+	<!-- UI 0,22 -->
 	<RoyalTitlePermitDef ParentName="SLP_DropResourcesBaseStuff">
 		<defName>SLP_ClothingDrop1</defName>
 		<label>Cold weather gear drop</label>
@@ -450,6 +503,8 @@
 		</royalAid>
 	</RoyalTitlePermitDef>
 	
+	<!-- Hot Weather Gear Drop -->
+	<!-- UI 0,23 -->
 	<RoyalTitlePermitDef ParentName="SLP_DropResourcesBaseStuff">
 		<defName>SLP_ClothingDrop2</defName>
 		<label>Hot weather gear drop</label>
@@ -486,6 +541,9 @@
       <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
+	<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+	</layerBlacklist>
   </RoyalTitlePermitDef>
   
     <!-- Quick Transport Shuttle -->
@@ -507,6 +565,22 @@
       <targetingRange>44.9</targetingRange>
       <targetingRequireLOS>false</targetingRequireLOS>
     </royalAid>
+	<layerBlacklist>
+		  <li MayRequire="Ludeon.RimWorld.Odyssey">Orbit</li>
+	</layerBlacklist>
   </RoyalTitlePermitDef>
+  
+	<!-- ======================================== Combat Support ========================================-->
+	<!-- 25mm Orbital Salvo -->
+	<!-- UI 0,24 -->
+	
+	<!-- 25mm Orbital Saturation -->
+	<!-- UI 1,24 -->
+	
+	<!-- 105mm Orbital Salvo -->
+	<!-- UI 0,24 -->
+	
+	<!-- 105mm Orbital Saturation -->
+	<!-- UI 0,24 -->
   
 </Defs>

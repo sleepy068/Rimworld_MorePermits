@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using RimWorld.QuestGen;
 using RimWorld.Planet;
-using Verse.Sound;
 using UnityEngine;
 using Verse;
 
@@ -646,9 +644,9 @@ namespace RimworldSLP_MorePermits
 			}
 			if (list.Any())
 			{
-				ActiveTransporterInfo activeTransporterInfo = new ActiveTransporterInfo();
-				activeTransporterInfo.innerContainer.TryAddRangeOrTransfer(list);
-				DropPodUtility.MakeDropPodAt(cell, map, activeTransporterInfo);
+				ActiveDropPodInfo activeDropPodInfo = new ActiveDropPodInfo();
+				activeDropPodInfo.innerContainer.TryAddRangeOrTransfer(list);
+				DropPodUtility.MakeDropPodAt(cell, map, activeDropPodInfo);
 				Messages.Message("MessagePermitTransportDrop".Translate(faction.Named("FACTION")), new LookTargets(cell, map), MessageTypeDefOf.NeutralEvent);
 				caller.royalty.GetPermit(def, faction).Notify_Used();
 				if (!free)
